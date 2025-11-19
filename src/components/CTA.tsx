@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Apple, Smartphone } from "lucide-react";
-import appMockup from "@/assets/app-mockup.jpg";
+import appMockup from "@/assets/app-mockup.png";
+import AppButton from "@/components/ui/landing_page/app_button";
 
 const CTA = () => {
   return (
@@ -19,14 +20,11 @@ const CTA = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button variant="hero" size="xl" className="flex items-center gap-2">
-                <Apple className="w-5 h-5" />
-                Scarica su App Store
-              </Button>
-              <Button variant="outline" size="xl" className="flex items-center gap-2">
-                <Smartphone className="w-5 h-5" />
-                Disponibile su Google Play
-              </Button>
+               <AppButton
+              label="Iscrizione"
+              onClick={() => console.log("Desktop pressed")}
+            />
+              
             </div>
 
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
