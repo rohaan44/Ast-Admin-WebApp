@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-
+import appMockup from "@/assets/app_mockup.png";
 const Testimonials = () => {
   const testimonials = [
     {
@@ -26,8 +26,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="section-padding bg-card">
-      <div className="container-custom">
+    <section className="section-padding">
+      <div className="container-custom bg-card ">
         <div className="text-center mb-16 fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             MEMBRO CHE DICE

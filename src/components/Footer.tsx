@@ -1,80 +1,46 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import Logo from "@/assets/Logo.png";
+
+import { toast } from "sonner";
+import { Button } from "./ui/button";
+import { useState } from "react";
+import { Input } from "./ui/input";
 
 const Footer = () => {
+    const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      toast.success("Grazie per esserti iscritto! Riceverai presto le nostre novità.");
+      setEmail("");
+    }
+  };
   return (
-    <footer className="bg-background border-t border-border">
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center mb-4">
-              <span className="text-2xl font-bold">
-                <span className="text-foreground">AST</span>
-                <span className="text-primary">®</span>
-              </span>
-            </div>
-            <p className="text-muted-foreground text-sm">
-              Trasforma il tuo corpo con il metodo scientifico AST®. Allenamenti personalizzati per risultati straordinari.
-            </p>
-          </div>
+    
+    <footer className="bg-background py-16">
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-bold mb-4">Link Rapidi</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#allenati" className="text-muted-foreground hover:text-primary transition-colors">
-                  Allenati
-                </a>
-              </li>
-              <li>
-                <a href="#chisiamo" className="text-muted-foreground hover:text-primary transition-colors">
-                  Chi Siamo
-                </a>
-              </li>
-              <li>
-                <a href="#storia" className="text-muted-foreground hover:text-primary transition-colors">
-                  Storia
-                </a>
-              </li>
-            </ul>
-          </div>
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <Input 
+              type="email" 
+              placeholder="Il tuo indirizzo email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="flex-1 h-12 bg-background border-border"
+            />
+            <Button type="submit" variant="hero" size="lg">
+              ISCRIVITI
+            </Button>
+          </form>
 
-          {/* Support */}
-          <div>
-            <h3 className="font-bold mb-4">Supporto</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#contatti" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contatti
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Termini di Servizio
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          {/* Social */}
-          <div>
-            <h3 className="font-bold mb-4">Seguici</h3>
+      <div className="flex items-center justify-center py-10">
+            <a href="#home">
+              <img src={Logo} alt="AST Logo" className="h-10 w-auto" />
+            </a>
+          </div>
+           <div className="flex justify-center">
             <div className="flex gap-4">
               <a 
                 href="#" 
@@ -106,13 +72,13 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
+
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
+        <div className="pt-8  text-center text-sm text-muted-foreground">
           <p>© 2024 AST®. Tutti i diritti riservati.</p>
         </div>
-      </div>
+    
     </footer>
   );
 };

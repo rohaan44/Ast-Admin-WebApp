@@ -1,6 +1,7 @@
 import { Apple, Smartphone } from "lucide-react";
 import AppButton from "@/components/ui/landing_page/app_button";
 import BenefitsList from "@/components/ui/landing_page/benifit_list";
+import DownloadSection from "@/components/ui/landing_page/download_section"; 
 import appMockup from "@/assets/app-mockup.png";
  const items = [ "Metodo basato sulla scienza, non sul caso", "Piani completamente personalizzati",
      "Automazioni intelligenti che fanno risparmiare tempo",
@@ -65,7 +66,13 @@ const App = () => {
           </div>
         </div>
       </div>
+
+      <section className="section-padding bg-background ">
+   <DownloadSection></DownloadSection>  
     </section>
+    </section>
+
+    
   );
 };
 

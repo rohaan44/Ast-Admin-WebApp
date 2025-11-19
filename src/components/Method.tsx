@@ -5,7 +5,7 @@ const Method = () => {
   return (
     <section className="section-padding">
       {/* Red accent border */}
-      <div className="absolute right-0 top-0 bottom-0 w-2 bg-primary hidden lg:block"></div>
+      {/* <div className="absolute right-0 top-0 bottom-0 w-2 bg-primary hidden lg:block"></div> */}
 
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

@@ -23,7 +23,7 @@ const Hero = () => {
             <span className="text-primary">AST®</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed fade-in">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed fade-in text-white">
             Un metodo rivoluzionario basato sulla scienza dell'allenamento che
             unisce biomeccanica, periodizzazione e recupero attivo per
             trasformare radicalmente il tuo fisico.

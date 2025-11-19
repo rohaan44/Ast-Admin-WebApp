@@ -1,40 +1,52 @@
-import { Trophy, TrendingUp, Target } from "lucide-react";
+import HatIcon from "@/assets/svg/hat.svg?react";
+import TrendingUpIcon from "@/assets/svg/trading_up.svg?react";
+import TargetIcon from "@/assets/svg/badge.svg?react";
 
 const Features = () => {
   const features = [
     {
-      icon: Trophy,
+      icon: HatIcon,
       title: "Risultati Garantiti",
-      description: "Il nostro metodo scientifico garantisce progressi misurabili e duraturi nel tempo, supportati da anni di ricerca e risultati comprovati."
+      description:
+        "Il nostro metodo scientifico garantisce progressi misurabili e duraturi nel tempo.",
     },
     {
-      icon: TrendingUp,
+      icon: TrendingUpIcon,
       title: "Crescita Costante",
-      description: "Programmi di allenamento progressivi che si adattano al tuo livello, assicurando una crescita continua e sostenibile dei tuoi risultati."
+      description:
+        "Programmi di allenamento progressivi che si adattano al tuo livello.",
     },
     {
-      icon: Target,
+      icon: TargetIcon,
       title: "Obiettivi Raggiungibili",
-      description: "Definiamo insieme obiettivi realistici e raggiungibili, con un piano d'azione concreto per trasformare il tuo corpo e la tua vita."
-    }
+      description:
+        "Obiettivi realistici con un piano d'azione concreto.",
+    },
   ];
 
   return (
     <section className="section-padding bg-background">
       <div className="container-custom">
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="text-center fade-in hover-lift p-8 rounded-lg bg-card border border-border transition-all duration-300 hover:border-primary"
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-                <feature.icon className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-            </div>
-          ))}
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+
+            return (
+             <div
+  key={index}
+  className=" text-center p-8 rounded-lg bg-card border border-transparent
+  hover:border-primary hover:shadow-lg hover:scale-[1.02]
+  transition-all duration-300"
+>
+  <div className="flex justify-center mb-6">
+    <Icon className="w-full h-auto max-w-[120px] text-primary" />
+  </div>
+
+  <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+  <p className="text-muted-foreground">{feature.description}</p>
+</div>
+            );
+          })}
         </div>
       </div>
     </section>

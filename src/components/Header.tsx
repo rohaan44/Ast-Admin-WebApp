@@ -1,5 +1,5 @@
 import Logo from "@/assets/Logo.png";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import AppButton from "@/components/ui/landing_page/app_button";
 
@@ -7,125 +7,53 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm"
-      style={{
-        backgroundColor: "transparent",
-      }}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 mt-5">
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
-          <div className="flex items-center">
-            <a href="#home">
-              <img src={Logo} alt="AST Logo" className="h-10 w-auto" />
-            </a>
-          </div>
+          <a href="#home" className="flex-shrink-0">
+            <img src={Logo} alt="AST Logo" className="h-10 w-auto" />
+          </a>
 
           {/* Desktop Navigation */}
           <div
-            className="flex flex-1 mx-6 h-12 rounded-full items-center justify-around px-6"
+            className="hidden lg:flex flex-1 mx-6 h-12 rounded-full items-center justify-around px-6  backdrop-blur-lg"
             style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
           >
-            <a
-              href="#home"
-              className="text-foreground font-normal hover:font-semibold hover:text-white transition-all"
-            >
-              Casa
-            </a>
-
-            <a
-              href="#allenati"
-              className="text-foreground font-normal hover:font-semibold hover:text-white transition-all"
-            >
-              Le nostre caratteristiche
-            </a>
-
-            <a
-              href="#chisiamo"
-              className="text-foreground font-normal hover:font-semibold hover:text-white transition-all"
-            >
-              Prezzi
-            </a>
-
-            <a
-              href="#storia"
-              className="text-foreground font-normal hover:font-semibold hover:text-white transition-all"
-            >
-              Contattaci
-            </a>
-
-            <a
-              href="#contatti"
-              className="text-foreground font-normal hover:font-semibold hover:text-white transition-all"
-            >
-              Domande frequenti
-            </a>
+            <NavItem href="#home" label="Casa" />
+            <NavItem href="#allenati" label="Le nostre caratteristiche" />
+            <NavItem href="#chisiamo" label="Prezzi" />
+            <NavItem href="#storia" label="Contattaci" />
+            <NavItem href="#contatti" label="Domande frequenti" />
           </div>
 
-          {/* Desktop CTA Button */}
-          <div className="hidden md:block">
-            <AppButton
-              label="Registrati"
-              onClick={() => console.log("Desktop pressed")}
-            />
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
+            <AppButton label="Registrati" onClick={() => {}} />
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile/Tablet Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="lg:hidden text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <Menu size={24} />
+            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile + Tablet Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-border">
-            <a
-              href="#home"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              HOME
-            </a>
-            <a
-              href="#allenati"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              ALLENATI
-            </a>
-            <a
-              href="#chisiamo"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              CHI SIAMO
-            </a>
-            <a
-              href="#storia"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              STORIA
-            </a>
-            <a
-              href="#contatti"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              CONTATTI
-            </a>
+          <div className="lg:hidden py-5 space-y-5 border-t border-white/20 bg-background/80 backdrop-blur-xl mt-2 rounded-xl p-5">
+            <MobileItem href="#home" label="Casa" close={() => setMobileMenuOpen(false)} />
+            <MobileItem href="#allenati" label="Le nostre caratteristiche" close={() => setMobileMenuOpen(false)} />
+            <MobileItem href="#chisiamo" label="Prezzi" close={() => setMobileMenuOpen(false)} />
+            <MobileItem href="#storia" label="Contattaci" close={() => setMobileMenuOpen(false)} />
+            <MobileItem href="#contatti" label="Domande frequenti" close={() => setMobileMenuOpen(false)} />
 
-            {/* Mobile CTA Button */}
             <AppButton
               label="Registrati"
-              onClick={() => {
-                console.log("Mobile pressed");
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
             />
           </div>
         )}
@@ -133,5 +61,26 @@ const Header = () => {
     </header>
   );
 };
+
+/* Desktop Nav Item */
+const NavItem = ({ href, label }: any) => (
+  <a
+    href={href}
+    className="text-white font-normal hover:font-semibold hover:text-primary transition-all"
+  >
+    {label}
+  </a>
+);
+
+/* Mobile/Tablet Nav Item */
+const MobileItem = ({ href, label, close }: any) => (
+  <a
+    href={href}
+    onClick={close}
+    className="block text-white text-lg font-medium hover:text-primary transition-colors"
+  >
+    {label}
+  </a>
+);
 
 export default Header;
