@@ -1,4 +1,3 @@
-import React from "react";
 import appMockup from "@/assets/app_mockup.png";
 import StoreButtonsIT from "@/components/ui/landing_page/store_button"; 
 const DownloadSection = () => {
