@@ -1,5 +1,6 @@
 import { Home, Dumbbell, Users, Bike, Sparkles, Clipboard, Settings, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface SidebarProps {
   activeTab: string;
@@ -7,12 +8,14 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+  const navigate = useNavigate();
+  
   const menuItems = [
-    { id: 'controllo', label: 'Controllo', icon: Home },
-    { id: 'atleta', label: 'Atleta', icon: Users },
-    { id: 'allenatori', label: 'Allenatori', icon: Dumbbell },
-    { id: 'tutore', label: 'Tutore', icon: Bike },
-    { id: 'piani', label: 'Piani', icon: Sparkles },
+    { id: 'controllo', label: 'Controllo', icon: Home, path: '/admin/dashboard' },
+    { id: 'atleta', label: 'Atleta', icon: Users, path: '/admin/athletes' },
+    { id: 'allenatori', label: 'Allenatori', icon: Dumbbell, path: '/admin/trainers' },
+    { id: 'tutore', label: 'Tutore', icon: Bike, path: '/admin/academy' },
+    { id: 'piani', label: 'Piani', icon: Sparkles, path: '/admin/plans' },
   ];
 
   return (
@@ -31,7 +34,10 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           return (
             <button
               key={item.id}
-              onClick={() => onTabChange(item.id)}
+              onClick={() => {
+                onTabChange(item.id);
+                navigate(item.path);
+              }}
               className={cn(
                 "flex flex-col items-center gap-1 p-3 rounded-lg transition-all group relative",
                 isActive 
@@ -53,7 +59,13 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
       {/* Bottom Actions */}
       <div className="flex flex-col items-center space-y-4">
-        <button className="flex flex-col items-center gap-1 p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all">
+        <button 
+          onClick={() => {
+            onTabChange('impostazioni');
+            navigate('/admin/settings');
+          }}
+          className="flex flex-col items-center gap-1 p-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all"
+        >
           <Settings size={24} />
           <span className="text-[10px] font-medium">Impostazioni</span>
         </button>
