@@ -30,6 +30,11 @@ const App = () => (
           <Route path='/' element={<Index />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/athletes" element={<Athletes />} />
+          <Route path="/admin/trainers" element={<Trainers />} />
+          <Route path="/admin/academy" element={<Academy />} />
+          <Route path="/admin/plans" element={<Plans />} />
+          <Route path="/admin/settings" element={<Settings />} />
           <Route path='/register' element={<Register />} />
           <Route path='/singin' element={<SingIn />} />
           <Route path='/otp-verification' element={<Otp />} />
