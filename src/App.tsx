@@ -17,6 +17,12 @@ import Payment1 from './pages/Register/payment/Payment1';
 import Payment2 from './pages/Register/payment/Payment2';
 import Payment3 from './pages/Register/payment/Payment3';
 import Payment4 from './pages/Register/payment/Payment4';
+import Academy from './pages/admin/Academy';
+import Athletes from './pages/admin/Athletes';
+import Trainers from './pages/admin/Trainers';
+import Plans from './pages/admin/Plans';
+import Settings from './pages/admin/Settings';
+// import { Settings } from 'lucide-react';
 
 const queryClient = new QueryClient();
 

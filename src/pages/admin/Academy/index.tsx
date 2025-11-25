@@ -247,81 +247,81 @@ export default function Academy() {
 
             {/* Certificate Status Overview - Full Width */}
             <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between p-4 border-b border-gray-800">
-                    <h2 className="text-lg font-semibold text-white">Certificate Status Overview</h2>
-                    <div className="flex items-center gap-4 text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                        <span className="text-gray-400">Valida</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                        <span className="text-gray-400">In scadenza a breve</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                        <span className="text-gray-400">Scaduta</span>
-                      </div>
-                    </div>
+              <div className="flex items-center justify-between p-4 border-b border-gray-800">
+                <h2 className="text-lg font-semibold text-white">Certificate Status Overview</h2>
+                <div className="flex items-center gap-4 text-xs">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span className="text-gray-400">Valida</span>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                    <span className="text-gray-400">In scadenza a breve</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                    <span className="text-gray-400">Scaduta</span>
+                  </div>
+                </div>
+              </div>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead className="bg-gray-800/50">
-                        <tr>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">S#</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Allenatore</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Certificazione</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Data di emissione</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Data di scadenza</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Stato</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Azioni</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {certificates.map((cert) => (
-                          <tr key={cert.id} className="border-t border-gray-800 hover:bg-gray-800/30 transition-colors">
-                            <td className="py-2 px-3">
-                              <span className="text-white text-sm">{cert.id}</span>
-                            </td>
-                            <td className="py-2 px-3">
-                              <div className="flex items-center gap-2">
-                                <img src={cert.avatar} alt={cert.trainer} className="w-6 h-6 rounded-full" />
-                                <span className="text-white text-sm">{cert.trainer}</span>
-                              </div>
-                            </td>
-                            <td className="py-2 px-3">
-                              <span className="text-gray-300 text-sm">{cert.certification}</span>
-                            </td>
-                            <td className="py-2 px-3">
-                              <span className="text-gray-300 text-sm">{cert.issueDate}</span>
-                            </td>
-                            <td className="py-2 px-3">
-                              <span className="text-gray-300 text-sm">{cert.expiryDate}</span>
-                            </td>
-                            <td className="py-2 px-3">
-                              <Badge 
-                                className={`text-xs ${
-                                  cert.status === 'Valido'
-                                    ? 'bg-green-500/20 text-green-500 hover:bg-green-500/30'
-                                    : cert.status === 'In scadenza'
-                                    ? 'bg-orange-500/20 text-orange-500 hover:bg-orange-500/30'
-                                    : 'bg-red-500/20 text-red-500 hover:bg-red-500/30'
-                                }`}
-                              >
-                                {cert.status}
-                              </Badge>
-                            </td>
-                            <td className="py-2 px-3">
-                              <button className="text-blue-500 text-xs hover:underline">
-                                Rinnova ora
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-gray-800/50">
+                    <tr>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">S#</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Allenatore</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Certificazione</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Data di emissione</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Data di scadenza</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Stato</th>
+                      <th className="text-left py-2 px-3 text-xs font-medium text-gray-400">Azioni</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {certificates.map((cert) => (
+                      <tr key={cert.id} className="border-t border-gray-800 hover:bg-gray-800/30 transition-colors">
+                        <td className="py-2 px-3">
+                          <span className="text-white text-sm">{cert.id}</span>
+                        </td>
+                        <td className="py-2 px-3">
+                          <div className="flex items-center gap-2">
+                            <img src={cert.avatar} alt={cert.trainer} className="w-6 h-6 rounded-full" />
+                            <span className="text-white text-sm">{cert.trainer}</span>
+                          </div>
+                        </td>
+                        <td className="py-2 px-3">
+                          <span className="text-gray-300 text-sm">{cert.certification}</span>
+                        </td>
+                        <td className="py-2 px-3">
+                          <span className="text-gray-300 text-sm">{cert.issueDate}</span>
+                        </td>
+                        <td className="py-2 px-3">
+                          <span className="text-gray-300 text-sm">{cert.expiryDate}</span>
+                        </td>
+                        <td className="py-2 px-3">
+                          <Badge 
+                            className={`text-xs ${
+                              cert.status === 'Valido'
+                                ? 'bg-green-500/20 text-green-500 hover:bg-green-500/30'
+                                : cert.status === 'In scadenza'
+                                ? 'bg-orange-500/20 text-orange-500 hover:bg-orange-500/30'
+                                : 'bg-red-500/20 text-red-500 hover:bg-red-500/30'
+                            }`}
+                          >
+                            {cert.status}
+                          </Badge>
+                        </td>
+                        <td className="py-2 px-3">
+                          <button className="text-blue-500 text-xs hover:underline">
+                            Rinnova ora
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </main>

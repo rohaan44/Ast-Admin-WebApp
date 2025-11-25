@@ -8,6 +8,8 @@ export default {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
+
+  
   prefix: '',
   theme: {
     screens: {
@@ -18,6 +20,7 @@ export default {
       xl: '1280px',
       '2xl': '1400px',
     },
+ 
 
     container: {
       center: true,
@@ -25,6 +28,9 @@ export default {
     },
 
     extend: {
+      fontFamily: {
+      sf: ["SF Pro", "sans-serif"],
+    },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -55,6 +61,7 @@ export default {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
+        
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -92,8 +99,11 @@ export default {
     },
   },
 
+  
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+
 
 // import type { Config } from 'tailwindcss';
 
@@ -108,7 +118,7 @@ export default {
 //   prefix: '',
 //   theme: {
 //     container: {
-//       center: true,
+//       center: true,me
 //       padding: '2rem',
 //       screens: {
 //         xsm: '450px', // 👈 YOUR CUSTOM BREAKPOINT HERE

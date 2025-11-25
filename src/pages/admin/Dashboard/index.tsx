@@ -47,42 +47,46 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex h-screen bg-[#0a0a0a] overflow-hidden">
-      {/* Sidebar */}
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+  <div className="flex h-screen bg-[#0a0a0a] overflow-hidden">
+    {/* Sidebar */}
+    <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <Header />
+    {/* Main Content */}
+    <div className="flex-1 flex flex-col overflow-hidden">
+      {/* Header */}
+      <Header />
 
-        {/* Dashboard Content */}
-        <main className="flex-1 overflow-y-auto p-4">
-          <div className="max-w-[1800px] mx-auto space-y-4">
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {stats.map((stat, index) => (
-                <StatsCard key={index} {...stat} />
-              ))}
-            </div>
+      {/* CONTENT */}
+      <main className="flex-1 overflow-y-auto p-4">
+        <div className="max-w-[1800px] mx-auto space-y-4">
 
-            {/* Charts Container */}
-            <div className="space-y-5">
-              {/* Row 1 */}
-              <div className="grid grid-cols-2 gap-5">
-                <RevenueChart />
-                <ActivityChart />
-              </div>
-              
-              {/* Row 2 */}
-              <div className="grid grid-cols-2 gap-5">
-                <TopPerformers />
-                <GrowthChart />
-              </div>
-            </div>
+          {/* Stats Cards - PERFECT mobile layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {stats.map((stat, index) => (
+              <StatsCard key={index} {...stat} />
+            ))}
           </div>
-        </main>
-      </div>
+
+          {/* Charts */}
+          <div className="space-y-5">
+            
+            {/* Row 1 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <RevenueChart />
+              <ActivityChart />
+            </div>
+
+            {/* Row 2 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <TopPerformers />
+              <GrowthChart />
+            </div>
+
+          </div>
+        </div>
+      </main>
     </div>
-  );
+  </div>
+);
+
 }
