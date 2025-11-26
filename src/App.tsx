@@ -16,6 +16,21 @@ import Payment2 from './pages/Register/payment/Payment2';
 import Payment3 from './pages/Register/payment/Payment3';
 import Payment4 from './pages/Register/payment/Payment4';
 
+// Athlete
+import AthleteLayout from './pages/AthleteDashboard/AthleteLayout';
+import UserDashboard from './pages/AthleteDashboard/UserDashboard';
+import WorkOutDashboard from './pages/AthleteDashboard/WorkOutMain/WorkOutDashboard';
+import Workout from './pages/AthleteDashboard/WorkOutMain/WorkOut';
+import Coaches from './pages/AthleteDashboard/WorkOutMain/Coaches';
+import AddCoaches from './pages/AthleteDashboard/AddCoach';
+import Chat from './pages/AthleteDashboard/Chat';
+import Setting from './pages/AthleteDashboard/Settings/Setting';
+import Profile from './pages/AthleteDashboard/Settings/Profile';
+// Coaches
+import CoachesLayout from './pages/Coaches/CoachesLayout';
+import CoachesHome from './pages/Coaches/CoachesHome';
+import Atleti from './pages/Coaches/Atleti';
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,8 +38,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+
       <BrowserRouter>
         <Routes>
+          {/* Normal Pages (NO SIDEBAR) */}
           <Route path='/' element={<Index />} />
           <Route path='/register' element={<Register />} />
           <Route path='/singin' element={<SingIn />} />
@@ -36,6 +53,26 @@ const App = () => (
           <Route path='/payment2' element={<Payment2 />} />
           <Route path='/payment3' element={<Payment3 />} />
           <Route path='/payment4' element={<Payment4 />} />
+          {/* Dashboard Layout (SIDEBAR ENABLED) */}
+          <Route element={<AthleteLayout />}>
+            <Route path='/user-dashboard' element={<UserDashboard />} />
+            <Route path='/work-out-dashboard' element={<WorkOutDashboard />} />
+            <Route
+              path='/work-out-dashboard/work-out/:id'
+              element={<Workout />}
+            />
+            <Route path='/work-out/:id/coaches' element={<Coaches />} />
+            <Route path='/coaches/add-coach' element={<AddCoaches />} />
+            <Route path='/chat' element={<Chat />} />
+            <Route path='/settings' element={<Setting />} />
+            <Route path='/settings/profile' element={<Profile />} />
+          </Route>
+
+          {/* Dashboard Layout (SIDEBAR ENABLED) */}
+          <Route element={<CoachesLayout />}>
+            <Route path='/home' element={<CoachesHome />} />
+            <Route path='/atleti' element={<Atleti />} />
+          </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
