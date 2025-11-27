@@ -1,10 +1,12 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import { ApexOptions } from 'apexcharts'; // important for typing
 import { LuChartSpline } from 'react-icons/lu';
 
-const GrowthOverview = () => {
-  const growthData = [10, 25, 15, 40, 30, 50, 45];
-  const options = {
+const GrowthOverview: React.FC = () => {
+  const growthData: number[] = [10, 25, 15, 40, 30, 50, 45];
+
+  const options: ApexOptions = {
     chart: {
       type: 'area',
       height: 300,
@@ -32,19 +34,19 @@ const GrowthOverview = () => {
     colors: ['#FF3A2F'],
     xaxis: {
       categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      labels: { style: { colors: '#fff' } },
+      labels: { style: { colors: '#ffffff' } },
       axisBorder: { show: false },
       axisTicks: { show: false },
     },
     yaxis: {
-      labels: { style: { colors: '#fff' } },
+      labels: { style: { colors: '#ffffff' } },
     },
     tooltip: {
       theme: 'dark',
     },
   };
 
-  const series = [
+  const series: { name: string; data: number[] }[] = [
     {
       name: 'Growth',
       data: growthData,
@@ -56,8 +58,8 @@ const GrowthOverview = () => {
       <h2 className='text-white flex items-center gap-2 text-2xl font-semibold mb-4'>
         <span className='mt-2'>
           <LuChartSpline />
-        </span>{' '}
-        panoramica della{' '}
+        </span>
+        panoramica della
       </h2>
       <Chart options={options} series={series} type='area' />
     </div>

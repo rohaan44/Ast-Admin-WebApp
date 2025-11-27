@@ -7,6 +7,7 @@ import {
   SettingsIcon,
   LogOutIcon,
 } from 'lucide-react';
+import { CiChat1 } from 'react-icons/ci';
 
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -31,10 +32,10 @@ function Sidebar({ activeTab, onTabChange }: SidebarProps) {
       id: 'allenatori',
       label: 'Allenatori',
       icon: DumbbellIcon,
-      path: '/admin/trainers',
+      path: '#',
     },
-    { id: 'tutore', label: 'Tutore', icon: BikeIcon, path: '/admin/academy' },
-    { id: 'piani', label: 'Piani', icon: SparklesIcon, path: '/admin/plans' },
+    { id: 'tutore', label: 'Tutore', icon: BikeIcon, path: '#' },
+    { id: 'piani', label: 'Piani', icon: CiChat1, path: '/coaches-chat' },
   ];
 
   const handleNavigation = (id: string, path: string) => {

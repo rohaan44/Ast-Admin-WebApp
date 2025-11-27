@@ -32,7 +32,7 @@ const ResponsiveMenu: React.FC<ResponsiveMenuProps> = ({ isOpen, onClose }) => {
       link: '/coaches/add-coach',
     },
     { id: 4, label: 'Check-In', icon: <PiCalendarCheck />, link: '/check-in' },
-    { id: 5, label: 'Chat', icon: <CiChat1 />, link: '/chat' },
+    { id: 5, label: 'Chat', icon: <CiChat1 />, link: '/athlete-chat' },
   ];
 
   const menuItems2 = [

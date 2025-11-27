@@ -83,8 +83,6 @@ const Home = () => {
           </span>
         </button>
       </div>
-
-      {/* CARDS SECTION */}
       <section className='mt-10 '>
         <div className='grid w-full h-full  grid-cols-2 lg:grid-cols-10 gap-6'>
           <div className='col-span-10 lg:col-span-6 h-full w-full'>
@@ -102,10 +100,7 @@ const Home = () => {
                     }`}
                   style={{ backgroundImage: `url(${item.image})` }}
                 >
-                  {/* BLACK OVERLAY */}
                   <div className='absolute inset-0 bg-black/40 backdrop-blur-[2px]' />
-
-                  {/* PROGRESS TOP RIGHT */}
                   <div className='absolute top-3 right-3 w-12'>
                     <CircularProgressbar
                       value={item.progress}

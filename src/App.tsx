@@ -23,13 +23,14 @@ import WorkOutDashboard from './pages/AthleteDashboard/WorkOutMain/WorkOutDashbo
 import Workout from './pages/AthleteDashboard/WorkOutMain/WorkOut';
 import Coaches from './pages/AthleteDashboard/WorkOutMain/Coaches';
 import AddCoaches from './pages/AthleteDashboard/AddCoach';
-import Chat from './pages/AthleteDashboard/Chat';
+import Chat from './pages/AthleteDashboard/AthleteChats';
 import Setting from './pages/AthleteDashboard/Settings/Setting';
 import Profile from './pages/AthleteDashboard/Settings/Profile';
 // Coaches
 import CoachesLayout from './pages/Coaches/CoachesLayout';
 import CoachesHome from './pages/Coaches/CoachesHome';
 import Atleti from './pages/Coaches/Atleti';
+import CoachesChat from './pages/Coaches/CoachesChats';
 
 const queryClient = new QueryClient();
 
@@ -63,15 +64,15 @@ const App = () => (
             />
             <Route path='/work-out/:id/coaches' element={<Coaches />} />
             <Route path='/coaches/add-coach' element={<AddCoaches />} />
-            <Route path='/chat' element={<Chat />} />
+            <Route path='/athlete-chat' element={<Chat />} />
             <Route path='/settings' element={<Setting />} />
             <Route path='/settings/profile' element={<Profile />} />
           </Route>
-
           {/* Dashboard Layout (SIDEBAR ENABLED) */}
           <Route element={<CoachesLayout />}>
             <Route path='/home' element={<CoachesHome />} />
             <Route path='/atleti' element={<Atleti />} />
+            <Route path='/coaches-chat' element={<CoachesChat />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>

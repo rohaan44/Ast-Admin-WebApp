@@ -4,7 +4,7 @@ import AisideBar from '@/components/AsideBar';
 
 const DashboardLayout = () => {
   const location = useLocation();
-  const hideSidebar = location.pathname.includes('/chat');
+  const hideSidebar = location.pathname.includes('/athlete-chat');
   return (
     <div className='flex w-full h-full bg-black'>
       {!hideSidebar && (

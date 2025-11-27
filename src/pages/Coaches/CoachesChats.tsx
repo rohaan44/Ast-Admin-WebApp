@@ -12,6 +12,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 import { LuPlus } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
+import ChatAisideBar from '@/components/CoachesChatAsidebar';
 
 export const chatList = [
   {
@@ -85,7 +86,7 @@ export const chatList = [
   },
 ];
 
-const Chat = () => {
+const CoachesChat = () => {
   const [selectedChat, setSelectedChat] = useState(null);
   const [message, setMessage] = useState('');
   const [search, setSearch] = useState('');
@@ -126,6 +127,7 @@ const Chat = () => {
 
   return (
     <section className='h-[100vh] w-full flex p-0 text-white'>
+      <ChatAisideBar />
       {/* CHAT LIST */}
       <div
         className={`w-full relative lg:w-[30rem] h-full border-r border-[#1E1E1E] py-4 flex flex-col
@@ -152,7 +154,7 @@ const Chat = () => {
             />
           </div>
         </div>
-        <div className='flex flex-col gap-1 overflow-y-auto'>
+        <div className='flex flex-col gap-1 overflow-y-auto no-scrollbar'>
           {filteredChats.map((chat) => (
             <div
               key={chat.id}
@@ -377,4 +379,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default CoachesChat;

@@ -54,7 +54,7 @@ const AisideBar = () => {
       icon: <CiChat1 />,
       bg: '#25252573',
       activeBg: '#FF3A2F',
-      link: '/chat',
+      link: '/athlete-chat',
     },
   ];
   const menuItems2 = [

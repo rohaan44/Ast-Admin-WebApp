@@ -9,8 +9,6 @@ const progressData = [
   { title: 'Carbonniti', progress: 100, text: '100% dei suoi obiettivi' },
   { title: 'Grassi', progress: 7, text: '7% dei suoi obiettivi' },
 ];
-
-// Function to determine color based on progress
 const getProgressColor = (value) => {
   if (value < 40) return 'red';
   if (value >= 40 && value <= 70) return 'yellow';
