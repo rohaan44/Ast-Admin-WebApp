@@ -5,11 +5,8 @@ import { MdOutlineDateRange } from 'react-icons/md';
 import { FaFire, FaDumbbell, FaStar } from 'react-icons/fa';
 import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io';
-import ProfileImage from '@/assets/ProfileImage1.png';
 import { exercises } from '@/Data/data.js';
 import { Link, useParams } from 'react-router-dom';
-import ResponsiveMenu from '@/components/ResponsiveMenu';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaRegBookmark } from 'react-icons/fa6';
 
 const defaultDetails = {
