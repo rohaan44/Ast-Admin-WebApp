@@ -5,16 +5,30 @@ import Icon2 from '@/assets/icon2.png';
 import Icon3 from '@/assets/icon3.png';
 import register from '@/assets/register.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '@/context/UserContext';
+
+type UserType = {
+  title: string;
+  desc: string;
+  icon: string;
+  url: string;
+  dashboardUrl: string;
+  bg: string;
+  border: string;
+};
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [selectedType, setSelectedType] = useState(null); // Track selected user type
-  const userTypes = [
+  const { setUserType } = useUser();
+  const [selectedType, setSelectedType] = useState<UserType | null>(null);
+
+  const userTypes: UserType[] = [
     {
       title: 'Atleta',
       desc: 'Ottieni piani di allenamento e nutrizione su misura per te.',
       icon: Icon1,
       url: '/singin',
+      dashboardUrl: '/athleta-user-dashboard',
       bg: 'bg-gradient-to-r from-[#7a0000] to-[#b10000]',
       border: 'border border-[#c32d2d]',
     },
@@ -23,6 +37,7 @@ const RegisterPage = () => {
       desc: 'Gestisci gli atleti e sviluppa la tua carriera da coach.',
       icon: Icon2,
       url: '/singin',
+      dashboardUrl: '/coaches-user-dashboard',
       bg: 'bg-gradient-to-r from-[#5a3a00] to-[#c89932]',
       border: 'border border-[#d1a447]',
     },
@@ -31,6 +46,7 @@ const RegisterPage = () => {
       desc: 'Eroga corsi e certifica nuovi coach.',
       icon: Icon3,
       url: '/singin',
+      dashboardUrl: '/',
       bg: 'bg-gradient-to-r from-[#003b36] to-[#0f6d58]',
       border: 'border border-[#1a8f6f]',
     },
@@ -38,9 +54,10 @@ const RegisterPage = () => {
 
   const handleContinue = () => {
     if (selectedType) {
+      setUserType(selectedType);
       navigate(selectedType.url);
     } else {
-      setSelectedType(userTypes[0]);
+      alert('Per favore seleziona un piano');
     }
   };
 
