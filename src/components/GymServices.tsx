@@ -39,7 +39,7 @@ const GymServices = () => {
         {filteredExercises.map((item) => (
           <Link
             key={item.id}
-            to={`/work-out-dashboard/work-out/${item.id}`}
+            to={`/athleta-work-out-dashboard/work-out/${item.id}`}
             className='relative rounded-2xl overflow-hidden w-full h-[25rem] block'
           >
             <img

@@ -48,8 +48,8 @@ const RegisterPage = () => {
   useEffect(() => {
     const type = localStorage.getItem('userType');
     if (type) {
-      if (type === 'Atleta') navigate('/user-dashboard');
-      else if (type === 'Allenatore') navigate('/home');
+      if (type === 'Atleta') navigate('/athleta-user-dashboard');
+      else if (type === 'Allenatore') navigate('/coaches-user-dashboard');
       else navigate('#');
     }
   }, []);

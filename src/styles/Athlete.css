@@ -3,5 +3,5 @@
 }
 
 .no-scrollbar {
-  scrollbar-width: none;
+  scrollbar-width: 0px;
 }

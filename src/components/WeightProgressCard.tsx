@@ -3,7 +3,6 @@ import React from 'react';
 const WeightProgressCard = ({ weight = 0, completion = 0 }) => {
   return (
     <div className='bg-[#191919] text-white rounded-xl p-6 w-full'>
-      {/* Header */}
       <div className='flex justify-between items-center mb-4'>
         <div>
           <h2 className='text-lg font-bold'>Peso corporeo</h2>
@@ -14,7 +13,7 @@ const WeightProgressCard = ({ weight = 0, completion = 0 }) => {
         <button className='text-gray-500 hover:text-white'>&rarr;</button>
       </div>
 
-      <div className='flex justify-between mx-0 sm:mx-10 space-x-1 mb-4'>
+      <div className='flex justify-between space-x-1 mb-4'>
         {[...Array(10)].map((_, idx) => (
           <div
             key={idx}
@@ -27,7 +26,6 @@ const WeightProgressCard = ({ weight = 0, completion = 0 }) => {
         ))}
       </div>
 
-      {/* Footer */}
       <div className='flex px-2 sm:px-10 justify-between text-sm text-gray-400'>
         <span>{weight} kg</span>
         <span>{completion}% Completato</span>

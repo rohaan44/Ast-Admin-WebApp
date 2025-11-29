@@ -10,6 +10,7 @@ import { exercises } from '@/Data/data.js';
 import { Link, useParams } from 'react-router-dom';
 import ResponsiveMenu from '@/components/ResponsiveMenu';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { FaRegBookmark } from 'react-icons/fa6';
 
 const defaultDetails = {
   mainTitle: 'N/A',
@@ -52,45 +53,22 @@ const Workout = () => {
   ];
 
   return (
-    <section className='w-full md:p-6 p-3'>
+    <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 p-3'>
       <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4 '>
         {/* Greeting */}
-        <h1 className='text-white font-bold text-2xl md:text-3xl'>
-          <span className='font-semibold'>Ciao,</span> Kelvin Dane
+        <h1 className='text-white font-bold flex items-start flex-col text-xl md:text-3xl'>
+          <span className='font-normal text-sm'>Lunedì, 25 Ago</span>
+          L’allenamento di oggi
         </h1>
         {/* Right Side */}
-        <div className='flex items-center gap-4 lg:w-auto'>
-          {/* Search bar (hidden below md) */}
-          <div className='hidden md:flex items-center gap-2 bg-[#151515] border border-[#252525] rounded-full px-4 flex-1 max-w-md w-full'>
-            <span className='text-2xl text-gray-400'>
-              <CiSearch />
-            </span>
-            <input
-              type='text'
-              placeholder='Cerca'
-              className='bg-transparent border-0 outline-none w-full py-2 text-white placeholder-gray-400'
-            />
-          </div>
-          <button className='hidden md:flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+        <div className='flex items-center gap-2 lg:w-auto'>
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+            <FaRegBookmark />
+          </button>
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
             <BsBell />
           </button>
-          <div className='flex md:hidden'>
-            <button
-              className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <GiHamburgerMenu />
-            </button>
-          </div>
-          <div className='hidden md:flex w-14 h-14 rounded-full overflow-hidden border border-[#252525]'>
-            <img
-              src={ProfileImage}
-              alt='Profile'
-              className='w-full h-full object-cover'
-            />
-          </div>
         </div>
-        <ResponsiveMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
       <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 mt-10 mb-5'>
         <div className='flex flex-col gap-10'>
@@ -264,27 +242,27 @@ const Workout = () => {
             <h1 className='text-2xl font-semibold'>
               {exercise.details.trainer.title}
             </h1>
-            <Link to={`/work-out/${id}/coaches`}>
+            <Link to={`/athleta-work-out/${id}/coaches`}>
               <p className='text-[#42A8FF] flex items-center gap-1 cursor-pointer'>
                 More <IoIosArrowForward />
               </p>
             </Link>
           </div>
 
-          <ul className='flex flex-col gap-4'>
+          <ul className='flex flex-col items-start w-full gap-4'>
             {exercise.details.foodItems.map((item, i) => (
               <li
                 key={i}
-                className='bg-[#191919] flex sm:flex-row px-2 py-2 sm:px-4 sm:py-3 flex-col items-center gap-4 rounded-2xl border border-[#252525]'
+                className='bg-[#191919] w-full flex sm:flex-row px-2 py-2 sm:px-4 sm:py-3 flex-col items-start md:items-center gap-4 rounded-2xl border border-[#252525]'
               >
-                <div className='sm:w-16 sm:h-16 rounded-xl overflow-hidden border border-[#333]'>
+                <div className='sm:w-16 w-full sm:h-16 rounded-xl overflow-hidden border border-[#333]'>
                   <img
                     src={exercise.details.trainer.image}
                     className='w-full h-full object-cover'
                   />
                 </div>
 
-                <div className='flex flex-col gap-2'>
+                <div className='flex items-start justify-start flex-col gap-2'>
                   <h1 className='text-xl font-semibold'>
                     {exercise.details.trainer.name}
                   </h1>

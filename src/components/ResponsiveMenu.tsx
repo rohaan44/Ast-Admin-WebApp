@@ -1,98 +1,142 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { CiSearch } from 'react-icons/ci';
-import { BsBell } from 'react-icons/bs';
-import { IoMdClose } from 'react-icons/io';
-import Logo from '@/assets/Logo.png';
-import { FaHome, FaCog, FaSignOutAlt } from 'react-icons/fa';
-import { LiaDumbbellSolid } from 'react-icons/lia';
+import {
+  HomeIcon,
+  DumbbellIcon,
+  SettingsIcon,
+  LogOutIcon,
+  LogOut,
+  Settings,
+} from 'lucide-react';
+import { CiChat1 } from 'react-icons/ci';
 import { TbApple } from 'react-icons/tb';
 import { PiCalendarCheck } from 'react-icons/pi';
-import { CiChat1 } from 'react-icons/ci';
+import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
-interface ResponsiveMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface SidebarProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
 }
-const ResponsiveMenu: React.FC<ResponsiveMenuProps> = ({ isOpen, onClose }) => {
-  const location = useLocation();
-  if (!isOpen) return null;
+
+export default function ResponsiveNavigation({
+  activeTab,
+  onTabChange,
+}: SidebarProps) {
+  const navigate = useNavigate();
+
   const menuItems = [
-    { id: 1, label: 'Home', icon: <FaHome />, link: '/user-dashboard' },
     {
-      id: 2,
+      id: 'controllo',
+      label: 'Controllo',
+      icon: HomeIcon,
+      path: '/athleta-user-dashboard',
+    },
+    {
+      id: 'formazione',
       label: 'Formazione',
-      icon: <LiaDumbbellSolid />,
-      link: '/work-out-dashboard',
+      icon: DumbbellIcon,
+      path: '/athleta-work-out-dashboard',
     },
     {
-      id: 3,
+      id: 'allenatori',
       label: 'Allenatori',
-      icon: <TbApple />,
-      link: '/coaches/add-coach',
+      icon: TbApple,
+      path: '/athleta/coaches/add-coach',
     },
-    { id: 4, label: 'Check-In', icon: <PiCalendarCheck />, link: '/check-in' },
-    { id: 5, label: 'Chat', icon: <CiChat1 />, link: '/athlete-chat' },
+    {
+      id: 'checkin',
+      label: 'Check-In',
+      icon: PiCalendarCheck,
+      path: '/athleta-checkin',
+    },
+    { id: 'chat', label: 'Chat', icon: CiChat1, path: '/athlete-chat' },
   ];
 
-  const menuItems2 = [
-    { id: 1, label: 'Settings', icon: <FaCog />, link: '/settings' },
-    { id: 2, label: 'Exit', icon: <FaSignOutAlt />, link: '/logout' },
-  ];
+  const handleNavigation = (id: string, path: string) => {
+    onTabChange(id);
+    navigate(path);
+  };
 
-  const renderMenuItem = (item: any) => {
-    const isActive = location.pathname === item.link;
+  const NavItem = ({
+    item,
+    isActive,
+    isMobile = false,
+  }: {
+    item: any;
+    isActive: boolean;
+    isMobile?: boolean;
+  }) => {
+    const Icon = item.icon;
     return (
-      <Link key={item.id} to={item.link}>
-        <button
-          className={`flex  items-center gap-2 w-full px-4 py-3 rounded-xl text-left transition-all duration-300 transform ${
+      <button
+        onClick={() => handleNavigation(item.id, item.path)}
+        className={cn(
+          'group flex items-center justify-center transition-all',
+          isMobile ? 'flex-col gap-1 w-full h-full' : 'flex-col gap-2 w-full'
+        )}
+      >
+        <div
+          className={cn(
+            'flex items-center justify-center transition-all duration-300 rounded-full',
+            isMobile ? 'w-10 h-10' : 'w-12 h-12',
+            // Active State Colors
             isActive
-              ? 'bg-[#FF3A2F] text-white scale-105'
-              : 'text-white hover:bg-[#252525] hover:scale-105'
-          }`}
+              ? 'bg-[#FF3B30] text-white shadow-lg shadow-red-500/20'
+              : 'bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10'
+          )}
         >
-          <span className='text-lg'>{item.icon}</span>
-          <span className='font-medium'>{item.label}</span>
-        </button>
-      </Link>
+          <Icon size={isMobile ? 20 : 22} strokeWidth={1.5} />
+        </div>
+        <span
+          className={cn(
+            'font-medium tracking-wide transition-colors',
+            isMobile ? 'text-[9px]' : 'text-[10px]',
+            isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'
+          )}
+        >
+          {item.label}
+        </span>
+      </button>
     );
   };
 
   return (
-    <div
-      className={`fixed top-0 right-0 h-full w-full sm:w-80 bg-[#111111] shadow-2xl rounded-l-2xl z-50 px-4 py-8 flex flex-col gap-4 transform transition-transform duration-500 ease-in-out ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
-    >
-      <div className='flex items-center justify-between mb-4'>
-        <img src={Logo} alt='Logo' className='h-10 w-auto object-contain' />
-        <button
-          onClick={onClose}
-          className='text-white text-2xl font-bold hover:text-red-500 transition'
-        >
-          <IoMdClose />
-        </button>
+    <>
+      <div className='md:hidden fixed top-0 left-0 right-0 h-16 bg-[#111111] border-b border-white/5 flex items-center justify-between px-6 z-50'>
+        <div className='w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center'>
+          <span className='text-[#FF3B30] font-bold italic text-md tracking-tighter'>
+            AST
+          </span>
+        </div>
+        <div className='flex gap-4'>
+          {/* Settings Icon for Mobile */}
+          <button
+            onClick={() => handleNavigation('impostazioni', '/admin/settings')}
+            className={cn(
+              'text-gray-400',
+              activeTab === 'impostazioni' ? 'text-[#FF3B30]' : ''
+            )}
+          >
+            <Settings size={24} />
+          </button>
+          <button
+            onClick={() => console.log('logout')}
+            className='text-gray-400'
+          >
+            <LogOut size={24} />
+          </button>
+        </div>
       </div>
-
-      <div className='flex items-center gap-2 bg-[#252525] rounded-full px-4 py-2'>
-        <CiSearch className='text-gray-400 text-xl' />
-        <input
-          type='text'
-          placeholder='Cerca'
-          className='bg-transparent w-full outline-none border-none text-white placeholder-gray-400'
-        />
+      <div className='md:hidden fixed bottom-0 left-0 right-0 h-20 bg-[#111111] border-t border-white/5 flex items-center justify-around px-2 z-50 pb-2'>
+        {menuItems.map((item) => (
+          <NavItem
+            key={item.id}
+            item={item}
+            isActive={activeTab === item.id}
+            isMobile={true}
+          />
+        ))}
       </div>
-
-      {/* Menu Items */}
-      <div className='mt-4 flex flex-col gap-2'>
-        {menuItems.map(renderMenuItem)}
-      </div>
-
-      <div className='flex flex-col gap-2'>
-        {menuItems2.map(renderMenuItem)}
-      </div>
-    </div>
+          
+    </>
   );
-};
-
-export default ResponsiveMenu;
+}

@@ -52,18 +52,6 @@ const Setting = () => {
         <h1 className='text-3xl text-white font-bold'>
           Profilo e impostazioni
         </h1>
-        <div className='flex items-center gap-4 lg:w-auto'>
-          {/* Menu mobile */}
-          <div className='flex md:hidden'>
-            <button
-              className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <GiHamburgerMenu />
-            </button>
-          </div>
-        </div>
-        <ResponsiveMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
 
       <section className='flex items-start justify-start gap-8'>

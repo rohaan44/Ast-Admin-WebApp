@@ -71,7 +71,7 @@ const Home = () => {
   ];
 
   return (
-    <section className='w-full md:my-2 my-20 p-3'>
+    <section className='w-full h-full md:mb-0 md:mt-0 mt-16 mb-20 p-3'>
       <div className='flex items-center justify-between'>
         <h1 className='md:text-3xl text-xl font-semibold'>
           Pannello Di Controllo

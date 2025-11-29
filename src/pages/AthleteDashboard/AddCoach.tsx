@@ -17,7 +17,7 @@ const AddCoaches = () => {
   const navigate = useNavigate();
 
   return (
-    <section className='w-full md:p-6 p-3'>
+    <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 p-3'>
       <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4'>
         <button
           onClick={() => navigate(-1)}
@@ -25,18 +25,6 @@ const AddCoaches = () => {
         >
           <IoIosArrowBack />
         </button>
-        <div className='flex items-center gap-4 lg:w-auto'>
-          {/* Menu mobile */}
-          <div className='flex md:hidden'>
-            <button
-              className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <GiHamburgerMenu />
-            </button>
-          </div>
-        </div>
-        <ResponsiveMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
 
       <div className='flex flex-col items-start gap-2 px-0 sm:px-10'>

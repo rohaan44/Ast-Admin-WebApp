@@ -9,10 +9,8 @@ import Image from '@/assets/hero-image.jpg';
 import NoChat from '@/assets/Chat.png';
 import '@/styles/Athlete.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-
 import { LuPlus } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
-import ChatAisideBar from '@/components/AthletsChatAsidebar';
 
 export const chatList = [
   {
@@ -126,8 +124,7 @@ const Chat = () => {
   };
 
   return (
-    <section className='h-[100vh] w-full flex p-0 text-white'>
-      <ChatAisideBar />
+    <section className='h-[100vh] no-scrollbar overflow-hidden md:mb-0 md:mt-0 mt-16 mb-20 w-full flex p-0'>
       {/* CHAT LIST */}
       <div
         className={`w-full relative lg:w-[30rem] h-full border-r border-[#1E1E1E] py-4 flex flex-col

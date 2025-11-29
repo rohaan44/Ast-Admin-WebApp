@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import AthletsAsideBar from '@/components/AthletsAsideBar';
+import CoachesAsidebar from '@/components/CoachesAsidebar';
 
 const DashboardLayout = () => {
   const [activeTab, setActiveTab] = useState('controllo');
-  const location = useLocation();
   return (
     <div className='flex items-start w-full h-full bg-black'>
       <div className='md:w-[auto] w-[0]'>
-        <AthletsAsideBar activeTab={activeTab} onTabChange={setActiveTab} />
+        <CoachesAsidebar activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
-      <div className='flex w-full'>
+      <div className='flex w-full h-full'>
         <Outlet />
       </div>
     </div>

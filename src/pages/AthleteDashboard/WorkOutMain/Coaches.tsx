@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import ResponsiveMenu from '@/components/ResponsiveMenu';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Coach1 from '@/assets/Coach1.jpg';
 import Coach2 from '@/assets/Caoch2.jpg';
 import Coach3 from '@/assets/Coach3.jpg';
@@ -71,45 +69,40 @@ const Coaches = () => {
       : coaches.filter((coach) => coach.specialty === activeFilter);
 
   return (
-    <section className='w-full md:p-6 p-3'>
+    <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 p-3'>
       {/* Header */}
-      <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4'>
+      <div className='flex flex-col md:flex-row items-center justify-between w-full gap-4'>
         <button
           onClick={() => navigate(-1)}
-          className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
+          className='bg-[#151515] hidden md:flex border border-[#FFFFFF0D] w-10 h-10 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
         >
           <IoIosArrowBack />
         </button>
-
-        <h1 className='text-white font-bold text-2xl md:text-3xl'>
+        <h1 className='text-white hidden md:flex font-bold text-2xl md:text-3xl'>
           Allenatori
         </h1>
+        <div className='md:hidden flex items-center justify-between w-full'>
+          <button
+            onClick={() => navigate(-1)}
+            className='bg-[#151515] border border-[#FFFFFF0D] w-10 h-10 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
+          >
+            <IoIosArrowBack />
+          </button>
 
-        <div className='flex items-center gap-4 lg:w-auto'>
-          {/* Search bar per desktop */}
-          <div className='hidden md:flex items-center gap-2 bg-[#151515] border border-[#252525] rounded-full px-4 flex-1 max-w-md w-full'>
-            <span className='text-2xl text-gray-400'>
-              <CiSearch />
-            </span>
-            <input
-              type='text'
-              placeholder='Cerca'
-              className='bg-transparent border-0 outline-none w-full py-2 text-white placeholder-gray-400'
-            />
-          </div>
-
-          {/* Menu mobile */}
-          <div className='flex md:hidden'>
-            <button
-              className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <GiHamburgerMenu />
-            </button>
-          </div>
+          <h1 className='text-white font-bold text-2xl md:text-3xl'>
+            Allenatori
+          </h1>
         </div>
-
-        <ResponsiveMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+        <div className='py-3 flex justify-between items-center gap-2 bg-[#151515] border border-[#252525] rounded-full px-4  md:w-[250px] w-full'>
+          <span className='text-2xl text-gray-400'>
+            <CiSearch />
+          </span>
+          <input
+            type='text'
+            placeholder='Cerca'
+            className='bg-transparent border-0 outline-none w-full text-white placeholder-gray-400'
+          />
+        </div>
       </div>
 
       {/* Bottoni filtro */}
@@ -130,27 +123,26 @@ const Coaches = () => {
       </div>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
         {filteredCoaches.map((coach) => (
-          <div
-            key={coach.id}
-            className='relative rounded-2xl overflow-hidden w-full h-96 block'
-          >
-            <img
-              src={coach.image}
-              alt={coach.name}
-              className='w-full h-full object-cover'
-            />
-            <div className='absolute inset-0 bg-black/50'></div>
-            <div className='absolute bottom-0 w-full px-5 py-3 flex flex-col'>
-              <h1 className='text-white text-xl'>{coach.name}</h1>
-              <p className='text-white/80'>{coach.specialty}</p>
-              <span className='text-white/60 text-sm'>{coach.tag}</span>
-              <div className='flex gap-2 mt-2'>
-                <button className='px-3 py-1 rounded-full bg-white/10 text-white text-sm'>
-                  {coach.level}
-                </button>
+          <Link key={coach.id} to={'/athleta/coaches/add-coach'}>
+            <div className='relative rounded-2xl overflow-hidden w-full h-96 block'>
+              <img
+                src={coach.image}
+                alt={coach.name}
+                className='w-full h-full object-cover'
+              />
+              <div className='absolute inset-0 bg-black/50'></div>
+              <div className='absolute bottom-0 w-full px-5 py-3 flex flex-col'>
+                <h1 className='text-white text-xl'>{coach.name}</h1>
+                <p className='text-white/80'>{coach.specialty}</p>
+                <span className='text-white/60 text-sm'>{coach.tag}</span>
+                <div className='flex gap-2 mt-2'>
+                  <button className='px-3 py-1 rounded-full bg-white/10 text-white text-sm'>
+                    {coach.level}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

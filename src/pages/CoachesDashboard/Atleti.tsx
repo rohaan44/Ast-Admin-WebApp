@@ -15,8 +15,6 @@ import { FaArrowUp } from 'react-icons/fa6';
 import DaysProgress from '@/components/DaysProgress';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { IoCloudDownloadOutline } from 'react-icons/io5';
-
-/* ---------------- USERS DATA (8 Profiles) ---------------- */
 const users = [
   {
     name: 'John Doe',
@@ -117,7 +115,6 @@ const users = [
 ];
 const Atleti = () => {
   const navigate = useNavigate();
-  /* ---------------- STATES ---------------- */
   const [filter, setFilter] = useState('Tutto');
   const [activeUser, setActiveUser] = useState(null);
   const [activeTab, setActiveTab] = useState('Panoramica');
@@ -153,7 +150,6 @@ const Atleti = () => {
   ];
   return (
     <section className='w-full md:mt-2 mt-16 md:mb-2 mb-8 p-3'>
-      {/* ===== HEADER ===== */}
       <div className='flex justify-between items-center'>
         <button
           onClick={() => navigate(-1)}

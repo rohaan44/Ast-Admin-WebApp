@@ -19,7 +19,7 @@ const ProgessReport = () => {
   return (
     <section className='grid lg:grid-cols-12 grid-cols-1 gap-4'>
       {/* Left Grid */}
-      <div className='lg:col-span-9 grid md:grid-cols-4 sm:grid-cols-2  gap-2'>
+      <div className='lg:col-span-8 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-2'>
         {progressData.map((item, index) => (
           <div
             key={index}
@@ -46,7 +46,7 @@ const ProgessReport = () => {
         ))}
       </div>
 
-      <div className='lg:col-span-3 flex flex-col gap-4 h-[250px] bg-[#151515] rounded-md py-4 px-2 justify-between'>
+      <div className='lg:col-span-4 flex flex-col gap-4 h-[250px] bg-[#151515] rounded-md py-4 px-2 justify-between'>
         <div className='flex items-start gap-2 flex-col'>
           <div className='flex items-center justify-between w-full '>
             <h1 className='text-xl font-semibold'>Camminando</h1>

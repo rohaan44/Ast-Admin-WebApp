@@ -127,7 +127,6 @@ const CoachesChat = () => {
 
   return (
     <section className='h-[100vh] w-full flex p-0 text-white'>
-      <ChatAisideBar />
       {/* CHAT LIST */}
       <div
         className={`w-full relative lg:w-[30rem] h-full border-r border-[#1E1E1E] py-4 flex flex-col

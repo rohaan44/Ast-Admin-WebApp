@@ -1,55 +1,54 @@
 import React from 'react';
 import Logo from '@/assets/Logo.png';
 import { Link, useLocation } from 'react-router-dom';
-import { LiaDumbbellSolid } from 'react-icons/lia';
 import { TbApple } from 'react-icons/tb';
 import { PiCalendarCheck } from 'react-icons/pi';
 import { CiChat1 } from 'react-icons/ci';
-import {
-  FaHome,
-  FaUser,
-  FaCog,
-  FaSignOutAlt,
-  FaChartPie,
-} from 'react-icons/fa';
+import { FaHome, FaCog, FaSignOutAlt, FaChartPie } from 'react-icons/fa';
+import { LiaDumbbellSolid } from 'react-icons/lia';
 const ChatAisideBar = () => {
   const location = useLocation();
   // ===== MENU ARRAY =====
   const menuItems = [
     {
-      id: 1,
+      id: 'controllo',
       icon: <FaHome />,
-      bg: '#25252573',
+      bg: '#2C2C2C',
+
       activeBg: '#FF3A2F',
-      link: '/user-dashboard',
+      path: '/athleta-user-dashboard',
     },
     {
-      id: 2,
+      id: 'formazione',
       icon: <LiaDumbbellSolid />,
-      bg: '#25252573',
+      bg: '#2C2C2C',
+
       activeBg: '#FF3A2F',
-      link: '/work-out-dashboard',
+      path: '/athleta-work-out-dashboard',
     },
     {
-      id: 3,
+      id: 'allenatori',
       icon: <TbApple />,
-      bg: '#25252573',
+      bg: '#2C2C2C',
+
+      path: '/athleta/coaches/add-coach',
       activeBg: '#FF3A2F',
-      link: '/coaches/add-coach',
     },
     {
-      id: 4,
+      id: 'checkin',
       icon: <PiCalendarCheck />,
-      bg: '#25252573',
+      path: '/athleta-checkin',
+      bg: '#2C2C2C',
+
       activeBg: '#FF3A2F',
-      link: '/check-in',
     },
     {
-      id: 5,
+      id: 'chat',
       icon: <CiChat1 />,
-      bg: '#25252573',
       activeBg: '#FF3A2F',
-      link: '/athlete-chat',
+      bg: '#2C2C2C',
+
+      path: '/athlete-chat',
     },
   ];
   const menuItems2 = [
@@ -58,7 +57,7 @@ const ChatAisideBar = () => {
       icon: <FaCog />,
       bg: '#2C2C2C',
       activeBg: '#FF3A2F',
-      link: '/settings',
+      link: '/athleta/settings',
     },
     {
       id: 2,
@@ -73,18 +72,16 @@ const ChatAisideBar = () => {
       {/* Sidebar */}
       <aside className='bg-[#111111]'>
         <div className='flex flex-col items-center gap-4 bg-[#111111] w-full h-[100vh] px-1 py-4'>
-          {/* Logo */}
           <div className='bg-black py-2 px-2 w-12 h-12 flex items-center justify-center rounded-full'>
             <img src={Logo} alt='AST Logo' className='h-4 w-auto' />
           </div>
-          {/* MENU LIST */}
           <div className='flex items-center justify-between h-full flex-col'>
             <ul className='flex flex-col gap-2  text-white'>
               {menuItems.map((item) => {
-                const isActive = location.pathname === item.link;
+                const isActive = location.pathname === item.path;
 
                 return (
-                  <Link key={item.id} to={item.link}>
+                  <Link key={item.id} to={item.path}>
                     <li className='flex flex-col gap-1 items-center cursor-pointer'>
                       <span
                         className='w-10 h-10 flex items-center justify-center text-white text-lg rounded-full transition-all duration-300'
@@ -101,7 +98,7 @@ const ChatAisideBar = () => {
             </ul>
             <ul className='flex  flex-col gap-2 text-white'>
               {menuItems2.map((item) => {
-                const isActive = location.pathname === item.link; // Active check
+                const isActive = location.pathname === item.link;
 
                 return (
                   <Link key={item.id} to={item.link}>

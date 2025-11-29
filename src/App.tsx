@@ -23,14 +23,17 @@ import WorkOutDashboard from './pages/AthleteDashboard/WorkOutMain/WorkOutDashbo
 import Workout from './pages/AthleteDashboard/WorkOutMain/WorkOut';
 import Coaches from './pages/AthleteDashboard/WorkOutMain/Coaches';
 import AddCoaches from './pages/AthleteDashboard/AddCoach';
+import AthletaCheckIn from './pages/AthleteDashboard/CheckIn/AthletaCheckIn';
+import CheckIn1 from './pages/AthleteDashboard/CheckIn/CheckIn1';
 import Chat from './pages/AthleteDashboard/AthleteChats';
 import Setting from './pages/AthleteDashboard/Settings/Setting';
 import Profile from './pages/AthleteDashboard/Settings/Profile';
 // Coaches
-import CoachesLayout from './pages/Coaches/CoachesLayout';
-import CoachesHome from './pages/Coaches/CoachesHome';
-import Atleti from './pages/Coaches/Atleti';
-import CoachesChat from './pages/Coaches/CoachesChats';
+import CoachesLayout from './pages/CoachesDashboard/CoachesLayout';
+import CoachesHome from './pages/CoachesDashboard/CoachesHome';
+import Atleti from './pages/CoachesDashboard/Atleti';
+import CoachesChat from './pages/CoachesDashboard/CoachesChats';
+import CoachesPlans from './pages/CoachesDashboard/CoachesPlans';
 
 const queryClient = new QueryClient();
 
@@ -56,22 +59,27 @@ const App = () => (
           <Route path='/payment4' element={<Payment4 />} />
           {/* Dashboard Layout (SIDEBAR ENABLED) */}
           <Route element={<AthleteLayout />}>
-            <Route path='/user-dashboard' element={<UserDashboard />} />
-            <Route path='/work-out-dashboard' element={<WorkOutDashboard />} />
+            <Route path='/athleta-user-dashboard' element={<UserDashboard />} />
             <Route
-              path='/work-out-dashboard/work-out/:id'
+              path='/athleta-work-out-dashboard'
+              element={<WorkOutDashboard />}
+            />
+            <Route
+              path='/athleta-work-out-dashboard/work-out/:id'
               element={<Workout />}
             />
-            <Route path='/work-out/:id/coaches' element={<Coaches />} />
-            <Route path='/coaches/add-coach' element={<AddCoaches />} />
+            <Route path='/athleta-work-out/:id/coaches' element={<Coaches />} />
+            <Route path='/athleta/coaches/add-coach' element={<AddCoaches />} />
+            <Route path='/athleta-checkin' element={<AthletaCheckIn />} />
+            <Route path='/athleta-checkin-1' element={<CheckIn1 />} />
             <Route path='/athlete-chat' element={<Chat />} />
-            <Route path='/settings' element={<Setting />} />
-            <Route path='/settings/profile' element={<Profile />} />
+            <Route path='/athleta/settings' element={<Setting />} />
+            <Route path='/athleta/settings/profile' element={<Profile />} />
           </Route>
-          {/* Dashboard Layout (SIDEBAR ENABLED) */}
           <Route element={<CoachesLayout />}>
-            <Route path='/home' element={<CoachesHome />} />
-            <Route path='/atleti' element={<Atleti />} />
+            <Route path='/coaches-user-dashboard' element={<CoachesHome />} />
+            <Route path='/coaches-atleti' element={<Atleti />} />
+            <Route path='/coaches-plans' element={<CoachesPlans />} />
             <Route path='/coaches-chat' element={<CoachesChat />} />
           </Route>
           <Route path='*' element={<NotFound />} />
