@@ -16,8 +16,8 @@ const WorkOutDashboard = () => {
         {/* Right Side */}
         <div className='flex md:w-[auto] w-full items-center justify-between gap-4 lg:w-auto'>
           {/* Search bar (hidden below md) */}
-          <div className='py-3 flex justify-between items-center gap-2 bg-[#151515] border border-[#252525] rounded-full px-4  md:max-w-md w-full'>
-            <span className='text-2xl text-gray-400'>
+          <div className='sm:py-3 flex justify-between items-center gap-2 bg-[#151515] border border-[#252525] rounded-full p-2 sm:px-4  md:max-w-md w-full'>
+            <span className='text-sm sm:text-2xl text-gray-400'>
               <CiSearch />
             </span>
             <input
@@ -27,10 +27,10 @@ const WorkOutDashboard = () => {
             />
           </div>
           <div className='flex items-center gap-1'>
-            <button className='bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full flex items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+            <button className='bg-[#151515] border border-[#FFFFFF0D]sm:w-14 sm:h-14 h-10 w-10 rounded-full flex items-center justify-center text-sm sm:text-xl text-white hover:bg-[#252525] transition'>
               <BsBell />
             </button>
-            <div className='w-14 h-14 rounded-full overflow-hidden border border-[#252525]'>
+            <div className='sm:w-14 sm:h-14 h-10 w-10 rounded-full overflow-hidden border border-[#252525]'>
               <img
                 src={ProfileImage}
                 alt='Profile'

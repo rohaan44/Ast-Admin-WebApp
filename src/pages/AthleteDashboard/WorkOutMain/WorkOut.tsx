@@ -59,10 +59,10 @@ const Workout = () => {
         </h1>
         {/* Right Side */}
         <div className='flex items-center gap-2 lg:w-auto'>
-          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] sm:w-14 sm:h-14 h-10 w-10 rounded-full  items-center justify-center text-sm sm:text-xl text-white hover:bg-[#252525] transition'>
             <FaRegBookmark />
           </button>
-          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] sm:w-14 sm:h-14 h-10 w-10 rounded-full  items-center justify-center text-sm sm:text-xl text-white hover:bg-[#252525] transition'>
             <BsBell />
           </button>
         </div>

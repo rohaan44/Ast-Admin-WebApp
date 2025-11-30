@@ -11,6 +11,7 @@ import '@/styles/Athlete.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { LuPlus } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
+import AthletsAsideBar from '@/components/AthletsAsideBar';
 
 export const chatList = [
   {
@@ -93,6 +94,8 @@ const Chat = () => {
   const [imageFile, setImageFile] = useState(null);
   const [openSearch, setOpenSearch] = useState(false);
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('controllo');
+
   const filteredChats = chatList.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -125,6 +128,9 @@ const Chat = () => {
 
   return (
     <section className='h-[100vh] no-scrollbar overflow-hidden md:mb-0 md:mt-0 mt-16 mb-20 w-full flex p-0'>
+      <div className='md:w-[auto] w-[0]'>
+        <AthletsAsideBar activeTab={activeTab} onTabChange={setActiveTab} />
+      </div>
       {/* CHAT LIST */}
       <div
         className={`w-full relative lg:w-[30rem] h-full border-r border-[#1E1E1E] py-4 flex flex-col
@@ -172,7 +178,10 @@ const Chat = () => {
                 <div className='flex items-center justify-between'>
                   <h2 className='font-semibold'>{chat.name}</h2>
                 </div>
-                <p className='text-sm text-gray-400 truncate'>
+                <p
+                  className='text-sm text-gray-400 truncate  [@media(max-width:400px)]:text-[10px] 
+               [@media(max-width:400px)]:max-w-[160px]'
+                >
                   {chat.lastMessage}
                 </p>
               </div>
@@ -199,52 +208,67 @@ const Chat = () => {
         }`}
       >
         {/* HEADER */}
-        <div className='h-20 border-b border-[#1E1E1E] px-4 flex items-center justify-between'>
-          <div className='h-20 border-b border-[#1E1E1E] sm:px-4 px-0 flex items-center justify-between'>
+        <div className='h-20 border-b border-[#1E1E1E] px-4 flex items-center justify-between relative'>
+          {/* Left Side */}
+          <div className='flex items-center gap-1 sm:gap-3'>
             {selectedChat ? (
-              <div className='flex items-center gap-3'>
+              <>
+                {/* Back Arrow */}
                 <button
                   onClick={() => setSelectedChat(null)}
                   className='lg:hidden text-2xl mr-2'
                 >
                   <IoArrowBackOutline />
                 </button>
+
+                {/* Avatar */}
                 <img
                   src={selectedChat.avatar}
-                  className='w-12 h-12 rounded-full'
+                  className='sm:w-12 w-8 h-8 sm:h-12 rounded-full'
                   alt={selectedChat.name}
                 />
+
+                {/* Name + Online */}
                 <div>
-                  <h2 className='text-lg font-semibold'>{selectedChat.name}</h2>
+                  <h2 className='text-sm sm:text-lg font-semibold'>
+                    {selectedChat.name}
+                  </h2>
                   <p className='text-sm text-green-400'>• Online</p>
                 </div>
-              </div>
+              </>
             ) : (
               <h2 className='text-gray-300 text-2xl font-normal'>
                 Seleziona una chat
               </h2>
             )}
           </div>
+
+          {/* Right Section */}
           <div className='flex items-center gap-2'>
-            {/* SEARCH BOX */}
+            {/* SEARCH */}
             <div
-              className='flex  items-center bg-[#1A1A1A] px-3 py-2 rounded-full cursor-pointer'
               onClick={() => setOpenSearch(true)}
+              className={`flex items-center bg-[#1A1A1A] px-3 py-2 rounded-full 
+                  cursor-pointer transition-all duration-300
+                  ${
+                    openSearch
+                      ? 'w-full absolute left-0 right-0 mx-auto'
+                      : 'w-fit'
+                  }
+                  sm:static`}
             >
               <CiSearch className='text-lg text-gray-400 mr-1' />
 
-              {/* Input sirf tab show hoga jab openSearch = true */}
               {openSearch && (
                 <input
                   placeholder='Search in chat…'
                   value={headerSearch}
                   onChange={(e) => setHeaderSearch(e.target.value)}
                   autoFocus
-                  className='bg-transparent outline-none text-sm text-gray-200  w-20 sm:w-60'
+                  className='bg-transparent outline-none text-sm text-gray-200 w-full'
                 />
               )}
 
-              {/* Close button (X) — sirf jab open ho */}
               {openSearch && (
                 <IoClose
                   onClick={(e) => {
@@ -256,27 +280,32 @@ const Chat = () => {
                 />
               )}
             </div>
-            <div className='relative'>
-              <BsThreeDotsVertical
-                className='text-xl cursor-pointer'
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              />
-              {dropdownOpen && (
-                <div className='absolute right-0 mt-2 bg-[#1A1A1A] border border-[#333] rounded-lg w-40 p-2'>
-                  <button
-                    onClick={clearMessages}
-                    className='w-full text-left px-3 py-2 hover:bg-[#222] rounded-md text-sm'
-                  >
-                    Clear All Chat
-                  </button>
-                </div>
-              )}
-            </div>
+
+            {/* 3 DOTS — Hidden Below 400px */}
+            {!openSearch && (
+              <div className='relative'>
+                <BsThreeDotsVertical
+                  className='text-xl cursor-pointer'
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                />
+
+                {dropdownOpen && (
+                  <div className='absolute right-0 mt-2 z-20 bg-[#1A1A1A] border border-[#333] rounded-lg w-40 p-2'>
+                    <button
+                      onClick={clearMessages}
+                      className='w-full text-left px-3 py-2 hover:bg-[#222] rounded-md text-sm'
+                    >
+                      Clear All Chat
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
         {/* MESSAGES */}
-        <div className='flex-1 py-4 px-4 overflow-y-auto no-scrollbar'>
+        <div className='flex-1 py-4 px-1 sm:px-4 overflow-y-auto no-scrollbar'>
           {!selectedChat ? (
             <div className='flex flex-col items-center justify-center h-full text-gray-400 gap-3'>
               <div className='bg-[#141414] rounded-full w-40 h-40 flex items-center justify-center p-4'>
@@ -304,7 +333,7 @@ const Chat = () => {
                 }`}
               >
                 <div
-                  className={`max-w-[60%] p-3 rounded-xl text-sm ${
+                  className={`max-w-full sm:max-w-[60%] p-2 sm:p-3 rounded-xl text-sm ${
                     msg.from === 'me'
                       ? 'bg-[#FDFFFC] text-[#333]'
                       : 'bg-[#333] text-white'
@@ -335,7 +364,7 @@ const Chat = () => {
 
         {/* INPUT */}
         {selectedChat && (
-          <div className='p-4 border-t border-[#1E1E1E] flex items-center gap-2'>
+          <div className='sm:p-4 p-2 border-t border-[#1E1E1E] flex items-center gap-2'>
             <input
               type='file'
               className='hidden'
@@ -344,7 +373,7 @@ const Chat = () => {
             />
             <label
               htmlFor='imagePicker'
-              className='bg-[#1A1A1A] px-4 py-4 rounded-full cursor-pointer text-lg'
+              className='bg-[#1A1A1A] sm:px-4 sm:py-4 p-2 rounded-full cursor-pointer text-sm sm:text-lg'
             >
               <MdAttachFile />
             </label>
@@ -353,11 +382,11 @@ const Chat = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder='Scrivi qualcosa…'
-              className='flex-1 bg-[#1A1A1A] text-white px-4 py-3 rounded-full outline-none'
+              className='flex-1 bg-[#1A1A1A] sm:text-lg text-sm text-white sm:px-4 p-2 sm:py-3 rounded-full outline-none'
             />
 
             <button
-              className='bg-[#1A1A1A] px-4 py-4 rounded-full text-lg text-white hover:bg-[#2A2A2A] transition'
+              className='bg-[#1A1A1A] sm:px-4 p-2 sm:py-4 rounded-full text-sm sm:text-lg text-white hover:bg-[#2A2A2A] transition'
               title='Voice Message'
             >
               <BsMicFill />
@@ -365,7 +394,7 @@ const Chat = () => {
 
             <button
               onClick={sendMessage}
-              className='bg-red-600 p-3 rounded-full text-xl'
+              className='bg-red-600 sm:px-4 p-2 sm:py-4 rounded-full text-sm sm:text-lg'
             >
               <IoSend />
             </button>

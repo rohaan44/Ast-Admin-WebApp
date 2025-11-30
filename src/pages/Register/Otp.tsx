@@ -43,25 +43,18 @@ const Otp = () => {
   };
 
   const handleSubmit = () => {
-    const otpCode = otp.join('');
-
-    // Case 1: OTP length not 6
-    if (otpCode.length !== 6) {
-      setError('Inserisci un OTP valido di 6 cifre');
-      return;
-    }
-
-    // Case 2: Wrong OTP (example check)
-    const correctOtp = '123456'; // API se ayega future me
-
-    if (otpCode !== correctOtp) {
-      setError('OTP non valido, riprova.');
-      return;
-    }
-
-    // Successful
+    // const otpCode = otp.join('');
+    // if (otpCode.length !== 6) {
+    //   setError('Inserisci un OTP valido di 6 cifre');
+    //   return;
+    // }
+    // const correctOtp = '';
+    // if (otpCode !== correctOtp) {
+    //   setError('OTP non valido, riprova.');
+    //   return;
+    // }
     setError('');
-    navigate('/gender'); // success redirect
+    navigate('/gender');
   };
 
   return (
