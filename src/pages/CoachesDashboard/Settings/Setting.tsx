@@ -1,39 +1,44 @@
 import ResponsiveMenu from '@/components/ResponsiveMenu';
 import React, { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import Coach1 from '@/assets/Coach1.jpg';
 import SettingImage from '@/assets/SettingImage.png';
 import { MdOutlinePerson } from 'react-icons/md';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { GrIntegration } from 'react-icons/gr';
-import { FaLanguage } from 'react-icons/fa6';
 import { MdExitToApp } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
+import { MdOutlinePayment } from 'react-icons/md';
 
 const settingsItems = [
   {
     id: 1,
     icon: <MdOutlinePerson className='text-xl text-red-500' />,
     label: 'Modifica profilo',
-    url: '/athleta/settings/profile',
+    url: '/coaches/settings/profile',
   },
   {
     id: 2,
     icon: <IoIosInformationCircleOutline className='text-xl text-red-500' />,
     label: "Informazioni sull'allenatore",
-    url: '/athleta/settings/profile-1',
+    url: '/coaches/settings/profile-1',
   },
   {
     id: 3,
     icon: <GrIntegration className='text-xl text-red-500' />,
     label: 'Integrazi',
-    url: '/athleta/settings/profile-3',
+    url: '/coaches/settings/profile-3',
+  },
+  {
+    id: 4,
+    icon: <MdOutlinePayment className='text-xl text-red-500' />,
+    label: 'Pagamenti e Royalties',
+    url: '/coaches/settings/profile-4',
   },
   {
     id: 5,
     icon: <MdExitToApp className='text-xl text-red-500' />,
     label: 'Esci',
-    url: '/logout',
+    url: '#',
   },
 ];
 

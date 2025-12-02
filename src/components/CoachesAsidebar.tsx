@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { CiChat1 } from 'react-icons/ci';
 import { TbApple } from 'react-icons/tb';
+import { FaRegCalendarCheck } from 'react-icons/fa';
 import { PiCalendarCheck } from 'react-icons/pi';
 import { cn } from '@/lib/utils';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -26,13 +27,20 @@ export default function ResponsiveNavigation({
 }: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const isChatPage = location.pathname.includes('/athlete-chat');
+  const isChatPage = location.pathname.includes('/coaches-chat');
   useEffect(() => {
-    const currentTab = menuItems.find((item) =>
+    let currentTab = menuItems.find((item) =>
       location.pathname.includes(item.path)
     )?.id;
+
+    // If not found, check for Settings
+    if (!currentTab && location.pathname.includes('/coaches/settings')) {
+      currentTab = 'impostazioni';
+    }
+
     if (currentTab) onTabChange(currentTab);
   }, [location.pathname]);
+
   const menuItems = [
     {
       id: 'controllo',
@@ -47,20 +55,19 @@ export default function ResponsiveNavigation({
       path: '/coaches-atleti',
     },
     {
-      id: 'allenatori',
-      label: 'Allenatori',
-      icon: TbApple,
-      path: '#',
+      id: 'check-in',
+      label: 'Check-In',
+      icon: FaRegCalendarCheck,
+      path: '/coaches-checkin',
     },
-    {
-      id: 'coachesplans',
-      label: 'Coaches Plans',
-      icon: LiaClipboardListSolid,
-      path: '/coaches-plans',
-    },
+    // {
+    //   id: 'coachesplans',
+    //   label: 'Coaches Plans',
+    //   icon: LiaClipboardListSolid,
+    //   path: '/coaches-plans',
+    // },
     { id: 'chat', label: 'Chat', icon: CiChat1, path: '/coaches-chat' },
   ];
-
   const handleNavigation = (id: string, path: string) => {
     onTabChange(id);
     navigate(path);
@@ -86,29 +93,42 @@ export default function ResponsiveNavigation({
         <div
           className={cn(
             'flex items-center justify-center transition-all duration-300 rounded-full',
-            isMobile ? 'w-10 h-10' : 'w-12 h-12',
+            `${
+              isChatPage
+                ? isMobile
+                  ? 'w-10 h-10'
+                  : 'w-10 h-10'
+                : isMobile
+                ? 'w-10 h-10'
+                : 'w-12 h-12'
+            }`,
             isActive
-              ? item.id === 'chat'
-                ? 'bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10'
-                : 'bg-[#FF3B30] text-white shadow-lg shadow-red-500/20'
+              ? 'bg-[#FF3B30] text-white shadow-lg shadow-red-500/20'
               : 'bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10'
           )}
         >
-          <Icon size={isMobile ? 20 : 22} strokeWidth={1.5} />
-        </div>
-        <span
-          className={cn(
-            'font-medium tracking-wide transition-colors',
-            isMobile ? 'text-[9px]' : 'text-[10px]',
-            isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'
+          {isChatPage ? (
+            <Icon size={isMobile ? 16 : 16} strokeWidth={1.5} />
+          ) : (
+            <Icon size={isMobile ? 20 : 22} strokeWidth={1.5} />
           )}
-        >
-          {item.label}
-        </span>
+        </div>
+        {isChatPage ? null : (
+          <span
+            className={cn(
+              'font-medium tracking-wide transition-colors',
+              isMobile ? 'text-[9px]' : 'text-[10px]',
+              isActive
+                ? 'text-white'
+                : 'text-gray-500 group-hover:text-gray-300'
+            )}
+          >
+            {item.label}
+          </span>
+        )}
       </button>
     );
   };
-
   return (
     <>
       {isChatPage ? (
@@ -145,7 +165,7 @@ export default function ResponsiveNavigation({
                 id: 'impostazioni',
                 label: 'Settings',
                 icon: Settings,
-                path: '/athleta/settings',
+                path: '/coaches/settings',
               }}
               isActive={activeTab === 'impostazioni'}
             />
@@ -190,7 +210,7 @@ export default function ResponsiveNavigation({
                 id: 'impostazioni',
                 label: 'Settings',
                 icon: Settings,
-                path: '/athleta/settings',
+                path: '/coaches/settings',
               }}
               isActive={activeTab === 'impostazioni'}
             />
@@ -221,7 +241,9 @@ export default function ResponsiveNavigation({
         <div className='flex gap-4'>
           {/* Settings Icon for Mobile */}
           <button
-            onClick={() => handleNavigation('impostazioni', '/admin/settings')}
+            onClick={() =>
+              handleNavigation('impostazioni', '/coaches/settings')
+            }
             className={cn(
               'text-gray-400',
               activeTab === 'impostazioni' ? 'text-[#FF3B30]' : ''
@@ -252,7 +274,6 @@ export default function ResponsiveNavigation({
     </>
   );
 }
-
 //       <button
 //         onClick={() => handleNavigation(item.id, item.path)}
 //         className={cn(

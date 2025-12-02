@@ -27,7 +27,7 @@ const Profile = () => {
     console.log('Profile saved:', profile);
     alert('Profile saved successfully!');
     setTimeout(() => {
-      navigate('/athleta/settings');
+      navigate('/coaches/settings');
     }, 2000);
   };
 

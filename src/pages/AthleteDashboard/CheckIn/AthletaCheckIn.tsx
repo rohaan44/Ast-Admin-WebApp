@@ -1,4 +1,3 @@
-import CheckIn1 from '@/pages/AthleteDashboard/CheckIn/CheckIn1';
 import CheckInIcon from '@/assets/CheckInIcon.png';
 import { MdDone, MdOutlineArrowForwardIos } from 'react-icons/md';
 import { LuBellRing } from 'react-icons/lu';
@@ -9,7 +8,7 @@ const AthletaCheckIn = () => {
   return (
     <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 md:p-6 p-3'>
       <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4'>
-        <h1 className='text-3xl text-white font-bold'>Check-In</h1>
+        <h1 className='text-lg  md:text-2xl text-white font-bold'>Check-In</h1>
       </div>
       <section className='flex items-start justify-start gap-8'>
         <div className='w-full lg:w-[25rem] my-5 mb-5 flex-shrink-0'>

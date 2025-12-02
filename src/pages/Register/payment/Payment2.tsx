@@ -4,13 +4,13 @@ import Logo from '@/assets/Logo.png';
 import { IoMdClose } from 'react-icons/io';
 import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5';
 
-const Payment1 = () => {
+const Payment2 = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (!selectedPlan) return; // extra safety
-    navigate('/payment3'); // Payment3 page route
+    if (!selectedPlan) return;
+    navigate('/payment3');
   };
 
   return (
@@ -90,4 +90,4 @@ const Payment1 = () => {
   );
 };
 
-export default Payment1;
+export default Payment2;

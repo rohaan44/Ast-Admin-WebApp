@@ -19,9 +19,12 @@ export default function ResponsiveNavigation({
   const location = useLocation();
   const isChatPage = location.pathname.includes('/athlete-chat');
   useEffect(() => {
-    const currentTab = menuItems.find((item) =>
+    let currentTab = menuItems.find((item) =>
       location.pathname.includes(item.path)
     )?.id;
+    if (!currentTab && location.pathname.includes('/athleta/settings')) {
+      currentTab = 'impostazioni';
+    }
     if (currentTab) onTabChange(currentTab);
   }, [location.pathname]);
   const menuItems = [

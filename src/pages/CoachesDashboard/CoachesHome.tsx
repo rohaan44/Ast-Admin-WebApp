@@ -8,6 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import GrowthOverview from '@/components/GrowthOverview';
+
 const Home = () => {
   const [activeItem, setActiveItem] = useState(0);
 

@@ -6,11 +6,11 @@ import { IoMdClose } from 'react-icons/io';
 import { FaStripe } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoApple } from 'react-icons/io5';
-
-const Payment2 = () => {
-  const [selectedPayment, setSelectedPayment] = useState(null);
+import { useUser } from '@/context/UserContext';
+const Payment3 = () => {
+  const { selectedPlan } = useUser();
+  const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
   const navigate = useNavigate();
-
   const paymentMethods = [
     {
       id: 'stripe',
@@ -29,24 +29,28 @@ const Payment2 = () => {
       Icon: <IoLogoApple className='text-3xl text-black' />,
     },
   ];
-
   const handleCheckout = () => {
     if (!selectedPayment) {
       alert('Seleziona un metodo di pagamento');
       return;
     }
-
-    // Simulate payment success
     alert(`Pagamento effettuato con ${selectedPayment} con successo!`);
-
-    // Redirect to Payment4 page
     navigate('/payment4');
   };
+  const planName = selectedPlan
+    ? selectedPlan === '249'
+      ? 'Rinnovo Licenza'
+      : 'Quota di Certificazione'
+    : 'Base';
+  const planAmount = selectedPlan
+    ? selectedPlan === '249'
+      ? '€249'
+      : '€549'
+    : '€79.00';
 
   return (
     <div className='h-full w-full flex items-center justify-center bg-black relative'>
       <div className='w-full h-full'>
-        {/* Top Section */}
         <div className='relative pt-6 px-6 flex justify-between items-center'>
           <img src={Logo} alt='AST Logo' className='h-10' />
           <div className='w-10'></div>
@@ -100,21 +104,19 @@ const Payment2 = () => {
               <div className='w-full flex flex-col items-start gap-1'>
                 <li className='flex items-center justify-between w-full'>
                   <p>Piano</p>
-                  <p>Base</p>
+                  <p>{planName}</p>
                 </li>
                 <li className='flex items-center justify-between w-full'>
                   <p>Importo</p>
-                  <p>€79.00</p>
+                  <p>{planAmount}</p>
                 </li>
               </div>
               <span className='w-full h-[1px] bg-[#454545]'></span>
               <div className='flex items-center justify-between w-full'>
                 <p>Totale</p>
-                <h1>€79.00</h1>
+                <h1>{planAmount}</h1>
               </div>
             </div>
-
-            {/* Checkout Button */}
             <button
               onClick={handleCheckout}
               disabled={!selectedPayment}
@@ -133,4 +135,4 @@ const Payment2 = () => {
   );
 };
 
-export default Payment2;
+export default Payment3;
