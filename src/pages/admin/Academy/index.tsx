@@ -246,7 +246,13 @@ export default function Academy() {
             </div>
 
             {/* Certificate Status Overview - Full Width */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+            <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden"
+            
+            style={
+              {
+                backgroundColor: 'transparent'
+              }
+            }>
               <div className="flex items-center justify-between p-4 border-b border-gray-800">
                 <h2 className="text-lg font-semibold text-white">Certificate Status Overview</h2>
                 <div className="flex items-center gap-4 text-xs">

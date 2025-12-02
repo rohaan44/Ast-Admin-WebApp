@@ -1,76 +1,157 @@
-import { Card } from '@/components/ui/card';
+import React, { useEffect, useState } from 'react';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+} from 'recharts';
 import { Activity } from 'lucide-react';
 
-export default function ActivityChart() {
-  const activities = [
-    { label: 'Allenatori in attesa di approvazione', percentage: 30, color: 'bg-red-500', stroke: '#ef4444' },
-    { label: 'Atleti in attesa di richieste', percentage: 25, color: 'bg-cyan-400', stroke: '#22d3ee' },
-    { label: 'Atleti acquistati', percentage: 20, color: 'bg-yellow-400', stroke: '#facc15' },
-    { label: 'Ticket', percentage: 15, color: 'bg-purple-500', stroke: '#a855f7' },
-    { label: 'Pagamenti in sospeso', percentage: 10, color: 'bg-green-400', stroke: '#4ade80' },
-  ];
+const data = [
+  { name: 'Allenatori in attesa di approvazione', value: 30, color: '#FF4D4D' },
+  { name: 'Atleti in attesa di richieste', value: 25, color: '#33A0FF' },
+  { name: 'Piani acquistati', value: 20, color: '#D4FF33' },
+  { name: 'Ticket', value: 15, color: '#C866FF' },
+  { name: 'Pagamenti in sospeso', value: 10, color: '#7AFF7A' },
+];
+
+const CustomTooltip = ({ active, payload }) => {
+  if (!active || !payload || !payload[0]) return null;
+
+  const item = payload[0].payload;
 
   return (
-    <Card 
-      className="bg-gray-900 border-gray-800 p-6 w-full"
-      style={{
-        height: '360px',
-        borderRadius: '15px',
-      }}
+    <div className="p-2 bg-gray-700 border border-gray-600 text-white rounded-lg shadow-lg"
+    
     >
-      <div className="flex items-center gap-2 mb-3">
-        <Activity size={18} className="text-gray-400" />
-        <h3 className="text-base font-semibold text-white">Attività e avvisi</h3>
+      <p className="font-semibold">{item.name}</p>
+      <p className="text-sm">{`Value: ${item.value}%`}</p>
+    </div>
+  );
+};
+
+export default function ActivityChart() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const innerRadius = isMobile ? 45 : 90;
+  const outerRadius = isMobile ? 75 : 140;
+  const paddingAngle = 5;
+
+  const truncateLabel = (text) => {
+    if (!isMobile) return text;
+    const words = text.split(" ");
+    return words.length > 3 ? words.slice(0, 3).join(" ") + "..." : text;
+  };
+
+  const CustomPieLabel = ({
+    cx,
+    cy,
+    midAngle,
+    outerRadius,
+    payload,
+  }) => {
+    const RADIAN = Math.PI / 180;
+
+    // edge point
+    const mx = cx + outerRadius * Math.cos(-midAngle * RADIAN);
+    const my = cy + outerRadius * Math.sin(-midAngle * RADIAN);
+
+    // elbow point (closer for mobile)
+    const labelRadius = outerRadius + (isMobile ? 8 : 20);
+    const ex = cx + labelRadius * Math.cos(-midAngle * RADIAN);
+    const ey = cy + labelRadius * Math.sin(-midAngle * RADIAN);
+
+    // horizontal end
+    const isRight = ex > cx;
+    const endX = ex + (isRight ? (isMobile ? 10 : 15) : (isMobile ? -10 : -15));
+    const endY = ey;
+
+    const textX = endX + (isRight ? 4 : -4);
+    const textYPercent = endY - (isMobile ? 4 : 6);
+    const textYLabel = endY + (isMobile ? 9 : 12);
+
+    return (
+      <g>
+        <polyline
+          points={`${mx},${my} ${ex},${ey} ${endX},${endY}`}
+          stroke="#E5E7EB"
+          strokeDasharray="4 4"
+          fill="none"
+          strokeWidth={1}
+        />
+
+        <text
+          x={textX}
+          y={textYPercent}
+          fill={payload.color}
+          textAnchor={isRight ? 'start' : 'end'}
+          dominantBaseline="central"
+          style={{
+            fontSize: isMobile ? '0.65rem' : '0.875rem',
+            fontWeight: 'bold',
+          }}
+        >
+          {`${payload.value}%`}
+        </text>
+
+        <text
+          x={textX}
+          y={textYLabel}
+          fill="#9CA3AF"
+          textAnchor={isRight ? 'start' : 'end'}
+          dominantBaseline="central"
+          style={{
+            fontSize: isMobile ? '0.6rem' : '0.75rem',
+          }}
+        >
+          {truncateLabel(payload.name)}
+        </text>
+      </g>
+    );
+  };
+
+  return (
+    <div className="w-full bg-gray-900 border border-gray-800 p-6 rounded-xl shadow-lg"
+         style={{ minHeight: '400px', backgroundColor: "rgba(0, 0, 0, 0)"} }>
+      <div className="flex items-center gap-2 mb-4">
+        <Activity size={20} className="text-gray-400" />
+        <h3 className="text-xl font-semibold text-white">Attività e avvisi</h3>
       </div>
 
-      {/* Donut Chart */}
-      <div className="flex items-center justify-center mb-2">
-        <div className="relative w-40 h-40">
-          <svg viewBox="0 0 100 100" className="transform -rotate-90">
-            {activities.reduce((acc, activity, index) => {
-              const prevPercentage = activities.slice(0, index).reduce((sum, a) => sum + a.percentage, 0);
-              const circumference = 2 * Math.PI * 35;
-              const offset = circumference - (activity.percentage / 100) * circumference;
-              const rotation = (prevPercentage / 100) * 360;
+      <div style={{ width: '100%', height: isMobile ? '300px' : '350px' }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={innerRadius}
+              outerRadius={outerRadius}
+              paddingAngle={paddingAngle}
+              dataKey="value"
+              stroke="none"
+              cornerRadius={5}
+              labelLine={false}
+              label={CustomPieLabel}
+            >
+              {data.map((entry, i) => (
+                <Cell key={i} fill={entry.color} />
+              ))}
+            </Pie>
 
-              acc.push(
-                <circle
-                  key={index}
-                  cx="50"
-                  cy="50"
-                  r="35"
-                  fill="none"
-                  stroke={activity.stroke}
-                  strokeWidth="12"
-                  strokeDasharray={circumference}
-                  strokeDashoffset={offset}
-                  style={{
-                    transformOrigin: 'center',
-                    transform: `rotate(${rotation}deg)`,
-                  }}
-                />
-              );
-              return acc;
-            }, [] as JSX.Element[])}
-            
-            {/* Inner circle */}
-            <circle cx="50" cy="50" r="28" fill="#0a0a0a" />
-          </svg>
-        </div>
+            <Tooltip content={<CustomTooltip active={undefined} payload={undefined} />} />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
-
-      {/* Legend */}
-      <div className="space-y-3">
-        {activities.map((activity, index) => (
-          <div key={index} className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className={`w-3 h-3 rounded-full ${activity.color}`} />
-              <span className="text-sm text-gray-400">{activity.label}</span>
-            </div>
-            <span className="text-sm font-semibold text-white">{activity.percentage}%</span>
-          </div>
-        ))}
-      </div>
-    </Card>
+    </div>
   );
 }

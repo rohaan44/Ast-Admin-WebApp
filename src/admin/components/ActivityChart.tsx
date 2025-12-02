@@ -17,12 +17,17 @@ export default function ActivityChart() {
         <h3 className="text-lg font-semibold text-white">Attività e avvisi</h3>
       </div>
 
-      {/* Donut Chart */}
-      <div className="flex items-center justify-center mb-6">
-        <div className="relative w-64 h-64">
-          <svg viewBox="0 0 100 100" className="transform -rotate-90">
+      {/* Responsive Layout */}
+      <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8">
+
+        {/* Responsive Donut */}
+        <div className="relative w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64">
+          <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
             {activities.reduce((acc, activity, index) => {
-              const prevPercentage = activities.slice(0, index).reduce((sum, a) => sum + a.percentage, 0);
+              const prevPercentage = activities
+                .slice(0, index)
+                .reduce((sum, a) => sum + a.percentage, 0);
+
               const circumference = 2 * Math.PI * 35;
               const offset = circumference - (activity.percentage / 100) * circumference;
               const rotation = (prevPercentage / 100) * 360;
@@ -34,7 +39,6 @@ export default function ActivityChart() {
                   cy="50"
                   r="35"
                   fill="none"
-                  stroke={activity.color.replace('bg-', '')}
                   strokeWidth="12"
                   strokeDasharray={circumference}
                   strokeDashoffset={offset}
@@ -46,25 +50,28 @@ export default function ActivityChart() {
                 />
               );
               return acc;
-            }, [] as JSX.Element[])}
-            
+            }, [])}
+
             {/* Inner circle */}
             <circle cx="50" cy="50" r="28" fill="#0a0a0a" />
           </svg>
         </div>
-      </div>
 
-      {/* Legend */}
-      <div className="space-y-3">
-        {activities.map((activity, index) => (
-          <div key={index} className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className={`w-3 h-3 rounded-full ${activity.color}`} />
-              <span className="text-sm text-gray-400">{activity.label}</span>
+        {/* Legend */}
+        <div className="space-y-3 w-full lg:w-auto">
+          {activities.map((activity, index) => (
+            <div key={index} className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className={`w-3 h-3 rounded-full ${activity.color}`} />
+                <span className="text-sm text-gray-400 leading-tight">{activity.label}</span>
+              </div>
+              <span className="text-sm font-semibold text-white">
+                {activity.percentage}%
+              </span>
             </div>
-            <span className="text-sm font-semibold text-white">{activity.percentage}%</span>
-          </div>
-        ))}
+          ))}
+        </div>
+
       </div>
     </Card>
   );

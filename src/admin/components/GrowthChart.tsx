@@ -3,7 +3,7 @@ import { TrendingUp } from 'lucide-react';
 
 export default function GrowthChart() {
   return (
-    <Card className="bg-gray-900 border-gray-800 p-6">
+    <Card className="bg-gray-900 border-gray-800 p-6" style={{backgroundColor: "#151515"}}>
       <div className="flex items-center gap-2 mb-6">
         <TrendingUp size={20} className="text-gray-400" />
         <h3 className="text-lg font-semibold text-white">Panoramica della crescita</h3>
