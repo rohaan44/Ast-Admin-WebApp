@@ -1,15 +1,12 @@
 import React from 'react';
 import Logo from '@/assets/LightLogo.png';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useUser } from '@/context/UserContext';
+import { useNavigate } from 'react-router-dom';
+
 const Payment4 = () => {
   type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: 'solid' | 'ghost';
   };
   const navigate = useNavigate();
-  const location = useLocation();
-  const { userType } = useUser();
-
   const Button: React.FC<ButtonProps> = ({
     variant = 'solid',
     children,
@@ -84,11 +81,23 @@ const Payment4 = () => {
               </button>
             </div>
 
-            <div className='mt-4 w-full flex items-center justify-between'>
-              <span className='text-neutral-400 text-xs'>Scarica ricevuta</span>
-              <Button variant='solid' onClick={handleDone}>
-                Fatto
-              </Button>
+              <div className='mt-4 w-full flex items-center justify-between'>
+                <span className='text-neutral-400 text-xs'>
+                  Scarica ricevuta
+                </span>
+                <Button
+                  variant='solid'
+                  onClick={() => {
+                    const type = localStorage.getItem('userType');
+
+                    if (type === 'Atleta') navigate('/user-dashboard');
+                    else if (type === 'Allenatore') navigate('/home');
+                    else if (type === 'Tutor') navigate('#');
+                  }}
+                >
+                  Fatto
+                </Button>
+              </div>
             </div>
           </div>
         </div>

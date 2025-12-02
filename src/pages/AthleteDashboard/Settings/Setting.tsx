@@ -47,7 +47,11 @@ const Setting = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+<<<<<<< HEAD
     <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 md:p-6 p-3'>
+=======
+    <section className='w-full md:p-6 p-3'>
+>>>>>>> taha-updates
       <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4'>
         <h1 className='text-3xl text-white font-bold'>
           Profilo e impostazioni

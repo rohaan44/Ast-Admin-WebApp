@@ -43,6 +43,25 @@ import Atleti from './pages/CoachesDashboard/Atleti';
 import CoachesChat from './pages/CoachesDashboard/CoachesChats';
 import CoachesPlans from './pages/CoachesDashboard/CoachesPlans';
 
+// Athlete
+import AthleteLayout from './pages/AthleteDashboard/AthleteLayout';
+import UserDashboard from './pages/AthleteDashboard/UserDashboard';
+import WorkOutDashboard from './pages/AthleteDashboard/WorkOutMain/WorkOutDashboard';
+import Workout from './pages/AthleteDashboard/WorkOutMain/WorkOut';
+import Coaches from './pages/AthleteDashboard/WorkOutMain/Coaches';
+import AddCoaches from './pages/AthleteDashboard/AddCoach';
+import AthletaCheckIn from './pages/AthleteDashboard/CheckIn/AthletaCheckIn';
+import CheckIn1 from './pages/AthleteDashboard/CheckIn/CheckIn1';
+import Chat from './pages/AthleteDashboard/AthleteChats';
+import Setting from './pages/AthleteDashboard/Settings/Setting';
+import Profile from './pages/AthleteDashboard/Settings/Profile';
+// Coaches
+import CoachesLayout from './pages/CoachesDashboard/CoachesLayout';
+import CoachesHome from './pages/CoachesDashboard/CoachesHome';
+import Atleti from './pages/CoachesDashboard/Atleti';
+import CoachesChat from './pages/CoachesDashboard/CoachesChats';
+import CoachesPlans from './pages/CoachesDashboard/CoachesPlans';
+
 const queryClient = new QueryClient();
 
 const App = () => (

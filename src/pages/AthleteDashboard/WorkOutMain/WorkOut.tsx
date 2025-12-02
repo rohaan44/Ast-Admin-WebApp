@@ -5,8 +5,16 @@ import { MdOutlineDateRange } from 'react-icons/md';
 import { FaFire, FaDumbbell, FaStar } from 'react-icons/fa';
 import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io';
+<<<<<<< HEAD
 import { exercises } from '@/Data/data.js';
 import { Link, useParams } from 'react-router-dom';
+=======
+import ProfileImage from '@/assets/ProfileImage1.png';
+import { exercises } from '@/Data/data.js';
+import { Link, useParams } from 'react-router-dom';
+import ResponsiveMenu from '@/components/ResponsiveMenu';
+import { GiHamburgerMenu } from 'react-icons/gi';
+>>>>>>> taha-updates
 import { FaRegBookmark } from 'react-icons/fa6';
 
 const defaultDetails = {
@@ -59,10 +67,17 @@ const Workout = () => {
         </h1>
         {/* Right Side */}
         <div className='flex items-center gap-2 lg:w-auto'>
+<<<<<<< HEAD
           <button className='flex bg-[#151515] border border-[#FFFFFF0D] sm:w-14 sm:h-14 h-10 w-10 rounded-full  items-center justify-center text-sm sm:text-xl text-white hover:bg-[#252525] transition'>
             <FaRegBookmark />
           </button>
           <button className='flex bg-[#151515] border border-[#FFFFFF0D] sm:w-14 sm:h-14 h-10 w-10 rounded-full  items-center justify-center text-sm sm:text-xl text-white hover:bg-[#252525] transition'>
+=======
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+            <FaRegBookmark />
+          </button>
+          <button className='flex bg-[#151515] border border-[#FFFFFF0D] w-14 h-14 rounded-full  items-center justify-center text-xl text-white hover:bg-[#252525] transition'>
+>>>>>>> taha-updates
             <BsBell />
           </button>
         </div>

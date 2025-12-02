@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '@/assets/Logo.png';
 import Icon1 from '@/assets/icon1.png';
 import Icon2 from '@/assets/icon2.png';
@@ -54,12 +54,25 @@ const RegisterPage = () => {
 
   const handleContinue = () => {
     if (selectedType) {
+<<<<<<< HEAD
       setUserType(selectedType);
+=======
+      localStorage.setItem('userType', selectedType.title);
+>>>>>>> taha-updates
       navigate(selectedType.url);
     } else {
       alert('Per favore seleziona un piano');
     }
   };
+
+  useEffect(() => {
+    const type = localStorage.getItem('userType');
+    if (type) {
+      if (type === 'Atleta') navigate('/athleta-user-dashboard');
+      else if (type === 'Allenatore') navigate('/coaches-user-dashboard');
+      else navigate('#');
+    }
+  }, []);
 
   return (
     <section className='relative w-full h-full py-10 px-6 md:px-12'>

@@ -1,4 +1,9 @@
-import { HomeIcon, DumbbellIcon, LogOut, Settings } from 'lucide-react';
+import {
+  HomeIcon,
+  DumbbellIcon,
+  LogOut,
+  Settings,
+} from 'lucide-react';
 import { CiChat1 } from 'react-icons/ci';
 import { TbApple } from 'react-icons/tb';
 import { PiCalendarCheck } from 'react-icons/pi';
@@ -225,9 +230,7 @@ export default function ResponsiveNavigation({
         <div className='flex gap-4'>
           {/* Settings Icon for Mobile */}
           <button
-            onClick={() =>
-              handleNavigation('impostazioni', '/athleta/settings')
-            }
+            onClick={() => handleNavigation('impostazioni', '/admin/settings')}
             className={cn(
               'text-gray-400',
               activeTab === 'impostazioni' ? 'text-[#FF3B30]' : ''
