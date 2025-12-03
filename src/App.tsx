@@ -59,6 +59,7 @@ import CoachesProfile3 from './pages/CoachesDashboard/Settings/Profile3';
 import CoachesProfile4 from './pages/CoachesDashboard/Settings/Profile4';
 import CoachesProfile5 from './pages/CoachesDashboard/Settings/Profile5';
 import CoachesProfile6 from './pages/CoachesDashboard/Settings/Profile6';
+import TutorDashboard from './pages/tutor/dashboard';
 
 const queryClient = new QueryClient();
 
@@ -127,6 +128,7 @@ const App = () => (
               element={<AthleteProfile3 />}
             />
           </Route>
+
           <Route element={<CoachesLayout />}>
             <Route path='/coaches-user-dashboard' element={<CoachesHome />} />
             <Route path='/coaches-atleti' element={<Atleti />} />
@@ -163,7 +165,7 @@ const App = () => (
               element={<CoachesProfile6 />}
             />
           </Route>
-          <Route path='*' element={<NotFound />} />
+          <Route path='/tutor/Dashbaord' element={<TutorDashboard />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

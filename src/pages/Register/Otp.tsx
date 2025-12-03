@@ -43,16 +43,7 @@ const Otp = () => {
   };
 
   const handleSubmit = () => {
-    // const otpCode = otp.join('');
-    // if (otpCode.length !== 6) {
-    //   setError('Inserisci un OTP valido di 6 cifre');
-    //   return;
-    // }
-    // const correctOtp = '';
-    // if (otpCode !== correctOtp) {
-    //   setError('OTP non valido, riprova.');
-    //   return;
-    // }
+ 
     setError('');
     navigate('/date-of-birth');
   };
