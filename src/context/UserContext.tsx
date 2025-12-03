@@ -7,6 +7,7 @@ export type UserType = {
 type PlanType = '249' | '549';
 type LastActionType = 'initialPayment' | 'paymentRenew' | null;
 type PaymentMethodType = 'stripe' | 'paypal' | 'google' | 'apple' | null;
+type RoleType = 'athlete' | 'coach' | 'tutor' | null;
 interface UserContextType {
   userType: UserType | null;
   setUserType: (type: UserType) => void;
@@ -20,6 +21,10 @@ interface UserContextType {
   setPaymentAmount: (amount: string) => void;
   receiptId: string | null;
   setReceiptId: (id: string) => void;
+  role: RoleType;
+  setRole: (role: RoleType) => void;
+  hasCompletedOnboarding: boolean;
+  setHasCompletedOnboarding: (val: boolean) => void;
 }
 const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -29,6 +34,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodType>(null);
   const [paymentAmount, setPaymentAmount] = useState<string | null>(null);
   const [receiptId, setReceiptId] = useState<string | null>(null);
+  const [role, setRole] = useState<RoleType>(null);
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+
   return (
     <UserContext.Provider
       value={{
@@ -44,6 +52,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setPaymentAmount,
         receiptId,
         setReceiptId,
+        role,
+        setRole,
+        hasCompletedOnboarding,
+        setHasCompletedOnboarding,
       }}
     >
       {children}

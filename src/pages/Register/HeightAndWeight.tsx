@@ -1,9 +1,10 @@
+import { useUser } from '@/context/UserContext';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TopSection from '@/components/TopSection';
 
-import HeightPicker from "@/components/Height_feet";
-import WeightPicker from "@/components/weight";
+import HeightPicker from '@/components/Height_feet';
+import WeightPicker from '@/components/weight';
 // import DobPicker from "@/components/DobPicker";
 
 const HeightWeightSelection = ({ currentStep = 2 }) => {
@@ -12,7 +13,8 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
 
   const steps = [1, 2, 3, 4];
   const navigate = useNavigate();
-
+  const { userType, setHasCompletedOnboarding } = useUser();
+  setHasCompletedOnboarding(true);
   const incHeight = () => setHeight((h) => h + 1);
   const decHeight = () => setHeight((h) => h - 1);
 
@@ -20,14 +22,15 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
   const decWeight = () => setWeight((w) => w - 1);
 
   const handleNext = () => {
-    // Optional: validation if needed
     if (!height || !weight) {
       alert('Seleziona altezza e peso prima di continuare');
       return;
     }
-
-    // Navigate to Fitness Goal Page
-    navigate('/fitness-goal'); // <-- Make sure this route exists
+    if (userType?.title === 'Tutor') {
+      navigate('/tutor/Dashbaord');
+    } else {
+      navigate('/fitness-goal');
+    }
   };
 
   return (
@@ -61,8 +64,8 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
             </div>
           </div> */}
 
- <HeightPicker />
-      <WeightPicker />
+          <HeightPicker />
+          <WeightPicker />
 
           {/* WEIGHT SELECTOR */}
           {/* <div className='flex flex-col items-center mt-10'>
@@ -79,16 +82,16 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
           </div> */}
 
           {/* NEXT BUTTON */}
-            <div className="flex justify-center">
+          <div className='flex justify-center'>
             <button
               onClick={handleNext}
-              className="
+              className='
       mt-4 
       bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-all
 
       w-[325px] h-[50px]
       md:w-[455px] md:h-[50px]
-    "
+    '
             >
               Avanti
             </button>

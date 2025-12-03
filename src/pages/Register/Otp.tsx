@@ -43,9 +43,8 @@ const Otp = () => {
   };
 
   const handleSubmit = () => {
- 
     setError('');
-    navigate('/date-of-birth');
+    navigate('/gender');
   };
 
   return (

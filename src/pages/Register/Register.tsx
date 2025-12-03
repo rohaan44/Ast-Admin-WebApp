@@ -19,9 +19,8 @@ type UserType = {
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const { userType, setUserType } = useUser();
+  const { userType, setUserType, hasCompletedOnboarding } = useUser();
   const [selectedType, setSelectedType] = useState<UserType | null>(null);
-
   const userTypes: UserType[] = [
     {
       title: 'Atleta',
@@ -46,7 +45,7 @@ const RegisterPage = () => {
       desc: 'Eroga corsi e certifica nuovi coach.',
       icon: Icon3,
       url: '/singin',
-      dashboardUrl: '/',
+      dashboardUrl: '/tutor/Dashbaord',
       bg: 'bg-gradient-to-r from-[#003b36] to-[#0f6d58]',
       border: 'border border-[#1a8f6f]',
     },
@@ -54,7 +53,7 @@ const RegisterPage = () => {
 
   const handleContinue = () => {
     if (selectedType) {
-      setUserType(selectedType); // Context me save
+      setUserType(selectedType);
       navigate(selectedType.url);
     } else {
       alert('Per favore seleziona una tipologia di utente');
@@ -62,20 +61,16 @@ const RegisterPage = () => {
   };
 
   useEffect(() => {
-    // Agar context me userType hai, turant dashboard pe bhej do
-    if (userType) {
-      navigate(userType.dashboardUrl);
+    if (userType && hasCompletedOnboarding) {
+      navigate(userType.dashboardUrl, { replace: true });
     }
-  }, [userType, navigate]);
+  }, [userType, hasCompletedOnboarding, navigate]);
 
   return (
     <section className='relative w-full h-full py-10 px-6 md:px-12'>
-      {/* Top/Bottom Glows */}
       <div className='absolute top-0 right-0 w-[250px] h-[250px] bg-red-600/100 blur-[160px] rounded-full pointer-events-none'></div>
       <div className='absolute bottom-0 left-0 w-[250px] h-[250px] bg-red-600/100 blur-[160px] rounded-full pointer-events-none'></div>
-
       <div className='relative bg-[#121212] shadow-xl px-2 sm:px-6 py-8 rounded-2xl gap-5 md:gap-10 grid grid-cols-1 lg:grid-cols-2 h-full z-10'>
-        {/* LEFT */}
         <div className='flex flex-col justify-between h-full'>
           <div className='flex flex-col gap-5 items-start mb-4'>
             <a href='#home'>

@@ -83,8 +83,8 @@ const App = () => (
           <Route path='/singin' element={<SingIn />} />
           <Route path='/otp-verification' element={<Otp />} />
           <Route path='/gender' element={<GenderSelection />} />
-          <Route path='/height-weight' element={<HeightWeightSelection />} />
           <Route path='/date-of-birth' element={<DateOfBirth />} />
+          <Route path='/height-weight' element={<HeightWeightSelection />} />
           <Route path='/fitness-goal' element={<FitnessGoal />} />
           <Route path='/payment1' element={<Payment1 />} />
           <Route path='/payment2' element={<Payment2 />} />
