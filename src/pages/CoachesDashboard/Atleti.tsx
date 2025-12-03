@@ -149,17 +149,15 @@ const Atleti = () => {
     },
   ];
   return (
-    <section className='w-full md:mt-2 mt-16 md:mb-2 mb-8 p-3'>
+    <section className='w-full md:mt-2 mt-16 md:mb-2 mb-10  p-3'>
       <div className='flex justify-between items-center'>
         <button
           onClick={() => navigate(-1)}
-          className='bg-[#151515] border w-12 h-12 rounded-full flex items-center justify-center'
+          className='bg-[#151515] border w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center'
         >
-          <IoIosArrowBack className='text-xl' />
+          <IoIosArrowBack className='text-lg sm:text-xl' />
         </button>
-
-        <h1 className='text-3xl font-bold'>Allenatori</h1>
-
+        <h1 className='text-xl sm:text-3xl font-bold'>Allenatori</h1>
         <div className='hidden md:flex items-center gap-2 bg-[#151515] border border-[#252525] rounded-full px-4 w-72'>
           <CiSearch className='text-xl text-gray-400' />
           <input
@@ -169,7 +167,7 @@ const Atleti = () => {
           />
         </div>
       </div>
-      <div className='grid h-full grid-cols-10 gap-6 mt-6'>
+      <div className='grid h-full grid-cols-10 gap-6 my-6'>
         <div
           className={`lg:col-span-3 col-span-10
         ${activeUser ? 'hidden lg:block' : 'block'} 
@@ -285,7 +283,7 @@ const Atleti = () => {
                   <div className='flex items-center gap-2'>
                     <button
                       onClick={() => setActiveUser(false)}
-                      className='lg:hidden flex items-center justify-center w-10 h-10 rounded-full 
+                      className='sm:hidden flex items-center justify-center w-10 h-10 rounded-full 
                bg-[#151515] hover:bg-[#202020] transition '
                     >
                       <IoIosArrowBack />
@@ -493,7 +491,7 @@ const Atleti = () => {
                       <h1 className='text-2xl font-semibold'>Strength PRs</h1>
                       <div className='grid w-full grid-cols-12 gap-4'>
                         <div className='grid xl:col-span-5 col-span-12'>
-                          <div className='flex items-start gap-2'>
+                          <div className='flex items-start flex-wrap gap-2'>
                             <div className='flex items-center flex-col gap-1'>
                               <div className='flex items-start h-32 w-32 bg-[#252525] rounded-xl overflow-hidden'>
                                 <img
@@ -577,16 +575,16 @@ const Atleti = () => {
                 {activeTab === 'Check-in' && (
                   <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4'>
                     {/* CARD 1 */}
-                    <div className='bg-[#1a1a1a] rounded-2xl p-4 w-full border border-gray-700 relative'>
-                      {/* Date */}
-                      <h2 className='text-white text-sm mb-2'>
-                        Sep 20, 2025 · 9:00 AM
-                      </h2>
+                    <div className='bg-[#1a1a1a] rounded-2xl p-4 w-full border border-gray-700'>
+                      <div className='flex items-center gap-1 justify-between w-full flex-wrap'>
+                        <h2 className='text-white text-sm mb-2'>
+                          Sep 20, 2025 · 9:00 AM
+                        </h2>
 
-                      {/* Status Badge */}
-                      <span className='absolute right-4 top-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full'>
-                        Revisionato
-                      </span>
+                        <span className='bg-green-500 text-white text-xs px-3 py-1 rounded-full'>
+                          Revisionato
+                        </span>
+                      </div>
                       <div className='flex mt-3 items-start gap-2'>
                         <div className='flex items-center flex-col gap-1'>
                           <div className='flex items-start sm:h-32 h-20 w-20 sm:w-32 bg-[#252525] rounded-xl overflow-hidden'>
@@ -632,15 +630,13 @@ const Atleti = () => {
                     </div>
 
                     {/* CARD 2 */}
-                    <div className='bg-[#1a1a1a] rounded-2xl p-4 w-full border border-gray-700 relative'>
-                      <div className='flex items-center w-full justify-between sm:flex-nowrap flex-wrap'>
-                        {/* Date */}
+                    <div className='bg-[#1a1a1a] rounded-2xl p-4 w-full border border-gray-700 '>
+                      {/* Date */}
+                      <div className='flex items-center gap-1 justify-between w-full flex-wrap'>
                         <h2 className='text-white text-sm mb-2'>
                           Sep 13, 2025 · 9:00 AM
                         </h2>
-
-                        {/* Status Badge */}
-                        <span className='absolute right-4 top-4 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full'>
+                        <span className='bg-yellow-500 text-white text-xs px-3 py-1 rounded-full'>
                           In attesa di
                         </span>
                       </div>
@@ -784,19 +780,19 @@ const Atleti = () => {
                               />
                             </div>
                             <div className='flex flex-col gap-1'>
-                              <h1 className='text-xl font-semibold'>
+                              <h1 className='text-sm sm:text-xl font-semibold'>
                                 Referto medico
                               </h1>
-                              <p className='text-sm text-[#FFFFFFB2] font-normal'>
+                              <p className='text-xs sm:text-sm text-[#FFFFFFB2] font-normal'>
                                 Dec 15, 2025
                               </p>
                             </div>
                           </div>
                           <div className='flex items-center gap-2 w-full justify-between'>
-                            <button className='py-3 bg-[#656565] px-10 rounded-full text-sm'>
+                            <button className='sm:py-3 py-2 bg-[#656565] px-6 sm:px-10 rounded-full text-sm'>
                               Medico
                             </button>
-                            <button className='py-4 px-4 bg-green-500 text-white rounded-full text-lg'>
+                            <button className='sm:py-4 sm:px-4 p-2 bg-green-500 text-white rounded-full text-sm sm:text-lg'>
                               <IoCloudDownloadOutline />
                             </button>
                           </div>

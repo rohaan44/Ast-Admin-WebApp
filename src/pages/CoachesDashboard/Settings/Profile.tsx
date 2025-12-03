@@ -18,7 +18,6 @@ const Profile = () => {
     identification: 'ID123456',
     certification: 'Cert123',
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
@@ -28,7 +27,7 @@ const Profile = () => {
     console.log('Profile saved:', profile);
     alert('Profile saved successfully!');
     setTimeout(() => {
-      navigate('/athleta/settings');
+      navigate('/coaches/settings');
     }, 2000);
   };
 
@@ -42,9 +41,7 @@ const Profile = () => {
   return (
     <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 md:p-6 p-3'>
       <section className='flex flex-col lg:flex-row items-start gap-8'>
-        {/* LEFT SIDE */}
         <div className='w-full lg:w-[25rem] flex-shrink-0 flex flex-col items-start gap-3'>
-          {/* Header */}
           <div className='flex items-center justify-between mb-8 w-full gap-4'>
             <span
               onClick={() => navigate(-1)}
@@ -56,8 +53,6 @@ const Profile = () => {
               Profilo e impostazioni
             </h1>
           </div>
-
-          {/* Profile Circle + Form */}
           <div className='my-5 w-full flex flex-col items-center'>
             <div className='relative w-28 h-28 rounded-full overflow-hidden border-4 border-red-600 cursor-pointer'>
               <img
@@ -82,8 +77,7 @@ const Profile = () => {
               </label>
             </div>
 
-            {/* Input Fields */}
-            <div className='flex-1 w-full rounded-xl flex flex-col gap-4 mt-4'>
+            <div className='flex-1 w-full rounded-xl flex flex-col gap-4'>
               {Object.keys(profile).map((field) => (
                 <div key={field} className='flex flex-col gap-1'>
                   <label className='text-gray-400 capitalize'>{field}</label>
@@ -107,7 +101,6 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* RIGHT SIDE IMAGE */}
         <div className='flex-1 h-[100vh] hidden lg:flex items-center justify-center'>
           <div className='flex flex-col gap-2 items-center'>
             <div className='w-28 h-28'>

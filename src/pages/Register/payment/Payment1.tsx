@@ -4,7 +4,7 @@ import Logo from '@/assets/Logo.png';
 import { IoMdClose } from 'react-icons/io';
 import { LiaDumbbellSolid } from 'react-icons/lia';
 
-const payment1 = () => {
+const Payment1 = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -92,4 +92,4 @@ const payment1 = () => {
   );
 };
 
-export default payment1;
+export default Payment1;

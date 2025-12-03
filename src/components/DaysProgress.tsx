@@ -14,9 +14,8 @@ const DaysProgress = () => {
               key={index}
               className='flex flex-col items-center gap-[6px] relative group'
             >
-              {/* Vertical Bar */}
               <div
-                className={`w-10 rounded-full transition-all duration-300`}
+                className={`w-4 sm:w-10 rounded-full transition-all duration-300`}
                 style={{
                   height: `${barHeight}px`,
                   backgroundColor: '#121212',
@@ -25,13 +24,10 @@ const DaysProgress = () => {
               >
                 <div className='w-full h-full rounded-full transition-all duration-300 cursor-pointer bg-[#252525] hover:bg-red-600'></div>
               </div>
-
-              {/* Tooltip on Hover */}
               <div className='absolute bottom-full mb-2 hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded'>
                 {hoursData[index]} hrs
               </div>
 
-              {/* Day Label */}
               <span className='text-[10px] font-semibold text-white'>
                 {day}
               </span>
@@ -47,7 +43,9 @@ const DaysProgress = () => {
         </h1>
 
         <h1 className='flex gap-1 items-center text-lg font-semibold'>
-          <span className='text-2xl font-bold text-[#FF8D28]'>80%</span>
+          <span className='text-lg sm:text-2xl font-bold text-[#FF8D28]'>
+            80%
+          </span>
           Completato
         </h1>
       </div>
