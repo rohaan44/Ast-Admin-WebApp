@@ -60,6 +60,7 @@ import CoachesProfile4 from './pages/CoachesDashboard/Settings/Profile4';
 import CoachesProfile5 from './pages/CoachesDashboard/Settings/Profile5';
 import CoachesProfile6 from './pages/CoachesDashboard/Settings/Profile6';
 import TutorDashboard from './pages/tutor/dashboard';
+import Corsi from './pages/tutor/courses/courses';
 
 const queryClient = new QueryClient();
 
@@ -166,6 +167,7 @@ const App = () => (
             />
           </Route>
           <Route path='/tutor/Dashbaord' element={<TutorDashboard />} />
+          <Route path='/tutor/courses' element={<Corsi />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

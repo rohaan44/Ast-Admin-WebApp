@@ -32,7 +32,7 @@ const TutorDashboard = () => {
           {/* Left side content */}
           <div className="xl:col-span-2 space-y-6">
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <StatsCard
                 title="Corsi Attivi 5"
                 subtitle="12 In attesa di"

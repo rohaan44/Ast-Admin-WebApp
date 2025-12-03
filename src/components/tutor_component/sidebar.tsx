@@ -1,7 +1,7 @@
-import { Home, Dumbbell, Users, Bike, Sparkles, Settings, LogOut } from 'lucide-react';
+import { Home,Settings,LogOut} from 'lucide-react';
+import courses from "@/components/svgs/courses.svg"
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
-
 import MyLogo from '@/assets/svg/Logo.svg';
 interface SidebarProps {
   activeTab: string;
@@ -13,7 +13,7 @@ export default function ResponsiveNavigation({ activeTab, onTabChange }: Sidebar
   
   const menuItems = [
     { id: 'controllo', label: 'Controllo', icon: Home, path: '/tutor/Dashbaord' },
-    // { id: 'atleta', label: 'Atleta', icon: Users, path: '/admin/athletes' },
+    { id: 'corsi', label: 'Corsi', icon: () => <img src={courses} className="w-6 h-6" />, path: ""},
     // { id: 'allenatori', label: 'Allenatori', icon: Dumbbell, path: '/admin/trainers' },
     // { id: 'tutore', label: 'Tutore', icon: Bike, path: '/admin/academy' },
     // { id: 'piani', label: 'Piani', icon: Sparkles, path: '/admin/plans' },
