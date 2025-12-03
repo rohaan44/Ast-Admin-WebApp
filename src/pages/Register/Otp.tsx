@@ -54,7 +54,7 @@ const Otp = () => {
     //   return;
     // }
     setError('');
-    navigate('/gender');
+    navigate('/date-of-birth');
   };
 
   return (

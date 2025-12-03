@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TopSection from '@/components/TopSection';
+import DobPicker from "@/components/date_of_birth_picker";
 
-import HeightPicker from "@/components/Height_feet";
-import WeightPicker from "@/components/weight";
-// import DobPicker from "@/components/DobPicker";
-
-const HeightWeightSelection = ({ currentStep = 2 }) => {
+const DateOfBirth = ({ currentStep = 2 }) => {
   const [height, setHeight] = useState(170);
   const [weight, setWeight] = useState(70);
 
@@ -27,7 +24,7 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
     }
 
     // Navigate to Fitness Goal Page
-    navigate('/fitness-goal'); // <-- Make sure this route exists
+    navigate('/height-weight'); // <-- Make sure this route exists
   };
 
   return (
@@ -39,11 +36,10 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
         <div className='mt-5 bg-black rounded-t-3xl min-h-[500px] flex flex-col justify-between items-center p-10'>
           <div className='flex flex-col items-center mt-6 text-center'>
             <h1 className='text-white text-3xl font-bold'>
-              Conosciamo altezza e peso
+              Quand'è il tuo compleanno?
             </h1>
             <p className='text-gray-400 text-sm mt-2'>
-              Queste informazioni ci aiutano a personalizzare i tuoi piani di
-              fitness.
+             Questo ci aiuta a personalizzare il tuo primo piano di allenamento e nutrizione.
             </p>
           </div>
 
@@ -60,9 +56,10 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
               </button>
             </div>
           </div> */}
-
+{/* 
  <HeightPicker />
-      <WeightPicker />
+      <WeightPicker /> */}
+    <DobPicker/>
 
           {/* WEIGHT SELECTOR */}
           {/* <div className='flex flex-col items-center mt-10'>
@@ -99,4 +96,4 @@ const HeightWeightSelection = ({ currentStep = 2 }) => {
   );
 };
 
-export default HeightWeightSelection;
+export default DateOfBirth;

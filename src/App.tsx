@@ -11,7 +11,7 @@ import Register from './pages/Register/Register';
 import SingIn from './pages/Register/SingIn';
 import Otp from './pages/Register/Otp';
 import GenderSelection from './pages/Register/GenderSelect';
-import DateOfBirth from './pages/Register/HeightAndWeight';
+import DateOfBirth from './pages/Register/DateOfBirth';
 import FitnessGoal from './pages/Register/FitnessGoal';
 import Payment1 from './pages/Register/payment/Payment1';
 import Payment2 from './pages/Register/payment/Payment2';
@@ -42,6 +42,7 @@ import CoachesHome from './pages/CoachesDashboard/CoachesHome';
 import Atleti from './pages/CoachesDashboard/Atleti';
 import CoachesChat from './pages/CoachesDashboard/CoachesChats';
 import CoachesPlans from './pages/CoachesDashboard/CoachesPlans';
+import HeightWeightSelection from './pages/Register/HeightAndWeight';
 
 const queryClient = new QueryClient();
 
@@ -66,7 +67,8 @@ const App = () => (
           <Route path='/singin' element={<SingIn />} />
           <Route path='/otp-verification' element={<Otp />} />
           <Route path='/gender' element={<GenderSelection />} />
-          <Route path='/height-weight' element={<DateOfBirth />} />
+          <Route path='/height-weight' element={<HeightWeightSelection />} />
+          <Route path='/date-of-birth' element={<DateOfBirth />} />
           <Route path='/fitness-goal' element={<FitnessGoal />} />
           <Route path='/payment1' element={<Payment1 />} />
           <Route path='/payment2' element={<Payment2 />} />
