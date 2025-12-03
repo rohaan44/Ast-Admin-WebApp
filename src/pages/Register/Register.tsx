@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '@/assets/Logo.png';
 import Icon1 from '@/assets/icon1.png';
 import Icon2 from '@/assets/icon2.png';
@@ -19,7 +19,7 @@ type UserType = {
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const { setUserType } = useUser();
+  const { userType, setUserType } = useUser();
   const [selectedType, setSelectedType] = useState<UserType | null>(null);
 
   const userTypes: UserType[] = [
@@ -54,12 +54,19 @@ const RegisterPage = () => {
 
   const handleContinue = () => {
     if (selectedType) {
-      setUserType(selectedType);
+      setUserType(selectedType); // Context me save
       navigate(selectedType.url);
     } else {
-      alert('Per favore seleziona un piano');
+      alert('Per favore seleziona una tipologia di utente');
     }
   };
+
+  useEffect(() => {
+    // Agar context me userType hai, turant dashboard pe bhej do
+    if (userType) {
+      navigate(userType.dashboardUrl);
+    }
+  }, [userType, navigate]);
 
   return (
     <section className='relative w-full h-full py-10 px-6 md:px-12'>
@@ -76,7 +83,7 @@ const RegisterPage = () => {
             </a>
 
             <div className='flex items-start mb-6 flex-col gap-2'>
-              <h1 className='text-2xl text-primary font-semibold text-white'>
+              <h1 className='text-2xl font-semibold text-white'>
                 Dicci chi sei per continuare.
               </h1>
               <p className='text-gray-300'>
@@ -100,7 +107,9 @@ const RegisterPage = () => {
                   <div className='absolute inset-0 bg-black/40 backdrop-blur-sm rounded-2xl pointer-events-none'></div>
 
                   <div className='flex items-start gap-1 flex-col static z-10'>
-                    <h3 className='text-2xl font-semibold'>{item.title}</h3>
+                    <h3 className='text-2xl font-semibold text-white'>
+                      {item.title}
+                    </h3>
                     <p className='text-gray-200 text-[18px]'>{item.desc}</p>
                   </div>
 

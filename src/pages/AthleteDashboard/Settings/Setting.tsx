@@ -1,14 +1,12 @@
-import ResponsiveMenu from '@/components/ResponsiveMenu';
-import React, { useState } from 'react';
+import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Coach1 from '@/assets/Coach1.jpg';
 import SettingImage from '@/assets/SettingImage.png';
 import { MdOutlinePerson } from 'react-icons/md';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { GrIntegration } from 'react-icons/gr';
-import { FaLanguage } from 'react-icons/fa6';
 import { MdExitToApp } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const settingsItems = [
   {
@@ -40,7 +38,7 @@ const settingsItems = [
 const Setting = () => {
   const navigate = useNavigate();
   return (
-    <section className='w-full md:mb-0 md:mt-0 mt-16 mb-20 md:p-6 p-3'>
+    <section className='w-full md:p-6 p-3'>
       <div className='flex flex-row items-start lg:items-center justify-between w-full gap-4'>
         <h1 className='text-lg sm:text-2xl text-white font-bold'>
           Profilo e impostazioni
@@ -69,6 +67,7 @@ const Setting = () => {
               </div>
             </div>
           </div>
+
           <ul className='w-full flex flex-col items-center gap-2'>
             {settingsItems.map((item) => (
               <li key={item.id} className='w-full'>

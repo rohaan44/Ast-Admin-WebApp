@@ -11,217 +11,223 @@ export default function Settings() {
   const [activeTab, setActiveTab] = useState("impostazioni");
 
   return (
-    <div className="flex min-h-screen bg-[#0a0a0a]">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+    <div className="flex min-h-screen bg-[#0A0A0A]">
+      {/* SIDEBAR (hidden on mobile) */}
+       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      {/* <div className="hidden lg:flex">
+       
+      </div> */}
 
+      {/* MAIN SECTION */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto p-4">
-          <div className="max-w-[1200px] mx-auto space-y-4">
-            {/* Page Header */}
-            <div>
-              <h1 className="text-2xl font-bold text-white mb-1">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
+          <div className="max-w-[1500px] mx-auto space-y-10">
+            {/* PAGE HEAD */}
+            <section>
+              <h1 className="text-[22px] md:text-[26px] lg:text-[28px] font-semibold text-white leading-tight">
                 Impostazioni del profilo
               </h1>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 text-[14px] md:text-[15px] mt-1">
                 Gestisci le preferenze e le configurazioni del sistema.
               </p>
-            </div>
+            </section>
 
-            {/* Profile Header */}
-            <div className="relative h-[200px] rounded-lg overflow-hidden pb-20">
+            {/* BANNER + AVATAR */}
+            <section className="relative rounded-2xl overflow-hidden h-[180px] sm:h-[220px] md:h-[260px]">
               <img
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=200&fit=crop"
-                alt="Cover"
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
-              {/* Avatar */}
-              <div className="absolute -bottom-16 left-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent" />
+
+              {/* AVATAR */}
+              <div className="absolute -bottom-0 sm:-bottom-20 md:-bottom-0 left-4 sm:left-6 md:left-10">
                 <div className="relative">
                   <img
                     src="https://i.pravatar.cc/150?img=33"
-                    alt="Sammy Snow"
-                    className="w-32 h-32 rounded-full border-4 border-[#0a0a0a]"
+                    className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-[4px] md:border-[6px] border-[#0A0A0A]"
                   />
-                  <button className="absolute bottom-2 right-2 bg-red-500 p-2 rounded-full hover:bg-red-600 transition-colors">
-                    <Camera size={16} className="text-white" />
+                  <button className="absolute bottom-2 right-2 bg-red-500 p-2.5 md:p-3 rounded-full shadow-lg hover:bg-red-600">
+                    <Camera size={16} className="text-white md:hidden" />
+                    <Camera size={20} className="text-white hidden md:block" />
                   </button>
                 </div>
               </div>
 
-              {/* Info */} 
-              <div className="absolute bottom-6 left-48">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-2xl font-bold text-white">Sammy Snow</h2>
-                  <Badge className="bg-green-500/20 text-green-500 hover:bg-green-500/30">
+              {/* USER INFO */}
+              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-[140px] sm:left-[180px] md:left-[240px]">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white">
+                    Sammy Snow
+                  </h2>
+                  <Badge className="bg-green-500/20 text-green-500 text-[10px] sm:text-[11px] md:text-[12px] px-2 md:px-3 py-0.5">
                     ADMIN
                   </Badge>
                 </div>
-                <p className="text-gray-300 text-sm mt-1">
-                  sammmy.admin@gmail.com
+                <p className="text-gray-300 text-[13px] sm:text-[14px] md:text-[15px] mt-0.5 md:mt-1">
+                  sammy.admin@gmail.com
                 </p>
               </div>
-            </div>
+            </section>
 
-            {/* Personal Information */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 mt-20">
-              <h3 className="text-lg font-semibold text-white mb-6">
+            {/* PERSONAL INFORMATION CARD */}
+            <section className="bg-[#111111] border border-[#1F1F1F] rounded-2xl p-5 sm:p-7 lg:p-10 pt-16">
+              <h3 className="text-[18px] md:text-[20px] font-semibold text-white mb-6 md:mb-8">
                 Personal Information
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Nome */}
+              {/* FORM GRID */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                {/* FIRST NAME */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
-                    Nome
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
+                    Nome di battesimo
                   </label>
                   <Input
                     defaultValue="Sammy Snow"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Cognome */}
+                {/* LAST NAME */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Cognome
                   </label>
                   <Input
                     placeholder="Cognome"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Bio */}
-                <div className="md:col-span-2">
-                  <label className="block text-sm text-gray-400 mb-2">
+                {/* BIO */}
+                <div className="sm:col-span-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Bio
                   </label>
                   <Textarea
                     defaultValue="Spero che la tua giornata sia andata bene oggi? Rendiamola ancora più bella iniziando a dare un'occhiata ai progressi del tuo team questo mese!"
-                    className="bg-gray-800 border-gray-700 text-white min-h-[80px]"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white min-h-[100px] sm:min-h-[120px]"
                   />
                 </div>
 
-                {/* Email */}
+                {/* EMAIL */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Indirizzo e-mail
                   </label>
                   <Input
                     defaultValue="sammy.admin@gmail.com"
                     type="email"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Phone */}
+                {/* PHONE */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Numero di telefono
                   </label>
                   <Input
                     defaultValue="+39-397-555-141"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Date of Birth */}
+                {/* DATE */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
-                    Data di nascita (Mese/Giorno)
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
+                    Data di nascita (facoltativo)
                   </label>
                   <Input
                     defaultValue="01 / 11 / 1999"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Role */}
+                {/* ROLE */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Ruolo utente
                   </label>
                   <Input
                     defaultValue="Admin"
                     disabled
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white opacity-60 h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* Location */}
+                {/* LOCATION */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Indirizzo (facoltativo)
                   </label>
                   <Input
                     defaultValue="Rome, Italy"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* User Level */}
+                {/* DUPLICATE ROLE */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Ruolo utente
                   </label>
                   <Input
                     defaultValue="Admin"
                     disabled
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white opacity-60 h-[42px] sm:h-[46px]"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end mt-6">
-                <Button className="bg-gray-700 hover:bg-gray-600 text-white">
+              {/* UPDATE BUTTON */}
+              <div className="flex justify-end mt-8 sm:mt-10">
+                <Button className="bg-[#1A1A1A] hover:bg-[#222] text-white px-6 py-4 rounded-xl text-sm sm:text-base">
                   Aggiorna informazioni
                 </Button>
               </div>
-            </div>
+            </section>
 
-            {/* Change Password */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-6">
+            {/* PASSWORD CHANGE CARD */}
+            <section className="bg-[#111111] border border-[#1F1F1F] rounded-2xl p-5 sm:p-7 lg:p-10">
+              <h3 className="text-[18px] md:text-[20px] font-semibold text-white mb-6 md:mb-8">
                 Cambiare la password
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Current Password */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Aggiungi nuova password
                   </label>
                   <Input
                     type="password"
-                    defaultValue="••••••••••"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    defaultValue="**********"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
 
-                {/* New Password */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="text-gray-400 text-[13px] sm:text-[14px] mb-1 block">
                     Conferma nuova password
                   </label>
                   <Input
                     type="password"
                     placeholder="Conferma nuova password"
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-[#0F0F0F] border-[#1F1F1F] text-white h-[42px] sm:h-[46px]"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end mt-6">
-                <Button className="bg-gray-700 hover:bg-gray-600 text-white">
+              <div className="flex justify-end mt-8 sm:mt-10">
+                <Button className="bg-[#1A1A1A] hover:bg-[#222] text-white px-6 py-4 rounded-xl text-sm sm:text-base">
                   Aggiorna informazioni
                 </Button>
               </div>
-            </div>
+            </section>
           </div>
         </main>
       </div>

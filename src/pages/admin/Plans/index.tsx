@@ -156,7 +156,11 @@ export default function Plans() {
             </div>
 
             {/* Plans Table */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+            <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden"
+            style={{
+              backgroundColor:'transparent'
+            }}
+            >
               <div className="flex items-center justify-between p-4 border-b border-gray-800">
                 <h2 className="text-lg font-semibold text-white">Piani di allenamento e nutrizione</h2>
                 <Button className="bg-red-500 hover:bg-red-600 text-white">

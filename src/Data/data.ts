@@ -1,10 +1,11 @@
-import Gym1 from '@/assets/gym1.jpg';
-import Gym2 from '@/assets/gym2.jpg';
-import Gym3 from '@/assets/gym3.jpg';
-import Gym4 from '@/assets/gym4.jpg';
-import Gym5 from '@/assets/gym5.jpg';
-import Gym6 from '@/assets/gym6.jpg';
+import Gym1 from '@/assets/Gym1.jpg';
+import Gym2 from '@/assets/Gym2.jpg';
+import Gym3 from '@/assets/Gym3.jpg';
+import Gym4 from '@/assets/Gym4.jpg';
+import Gym5 from '@/assets/Gym5.jpg';
+import Gym6 from '@/assets/Gym6.jpg';
 import trainer_img from '@/assets/ProfileImage1.png';
+
 export const exercises = [
   {
     id: 1,

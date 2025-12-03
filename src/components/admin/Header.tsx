@@ -7,6 +7,7 @@ export default function Header() {
     // 1. HEADER CONTAINER: Fixed on top for mobile, expands in height when stacked.
     <header
       className="
+      mt-20 md:mt-0
      h-28 md:h-20
     bg-[#0a0a0a] border-b border-gray-800 
     px-4 lg:px-8 
