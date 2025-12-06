@@ -1,16 +1,11 @@
-import {
-  HomeIcon,
-  DumbbellIcon,
-  LogOut,
-  Settings,
-} from 'lucide-react';
-import { CiChat1 } from 'react-icons/ci';
-import { TbApple } from 'react-icons/tb';
-import { PiCalendarCheck } from 'react-icons/pi';
-import { cn } from '@/lib/utils';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import { HomeIcon, DumbbellIcon, LogOut, Settings } from "lucide-react";
+import { CiChat1 } from "react-icons/ci";
+import { TbApple } from "react-icons/tb";
+import { PiCalendarCheck } from "react-icons/pi";
+import { cn } from "@/lib/utils";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import MyLogo from "@/assets/svg/Logo.svg";
 interface SidebarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
@@ -22,42 +17,42 @@ export default function ResponsiveNavigation({
 }: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const isChatPage = location.pathname.includes('/athlete-chat');
+  const isChatPage = location.pathname.includes("/athlete-chat");
   useEffect(() => {
     let currentTab = menuItems.find((item) =>
       location.pathname.includes(item.path)
     )?.id;
-    if (!currentTab && location.pathname.includes('/athleta/settings')) {
-      currentTab = 'impostazioni';
+    if (!currentTab && location.pathname.includes("/athleta/settings")) {
+      currentTab = "impostazioni";
     }
     if (currentTab) onTabChange(currentTab);
   }, [location.pathname]);
   const menuItems = [
     {
-      id: 'controllo',
-      label: 'Controllo',
+      id: "controllo",
+      label: "Controllo",
       icon: HomeIcon,
-      path: '/athleta-user-dashboard',
+      path: "/athleta-user-dashboard",
     },
     {
-      id: 'formazione',
-      label: 'Formazione',
+      id: "formazione",
+      label: "Formazione",
       icon: DumbbellIcon,
-      path: '/athleta-work-out-dashboard',
+      path: "/athleta-work-out-dashboard",
     },
     {
-      id: 'allenatori',
-      label: 'Allenatori',
+      id: "allenatori",
+      label: "Allenatori",
       icon: TbApple,
-      path: '/athleta/coaches/add-coach',
+      path: "/athleta/coaches/add-coach",
     },
     {
-      id: 'checkin',
-      label: 'Check-In',
+      id: "checkin",
+      label: "Check-In",
       icon: PiCalendarCheck,
-      path: '/athleta-checkin',
+      path: "/athleta-checkin",
     },
-    { id: 'chat', label: 'Chat', icon: CiChat1, path: '/athlete-chat' },
+    { id: "chat", label: "Chat", icon: CiChat1, path: "/athlete-chat" },
   ];
 
   const handleNavigation = (id: string, path: string) => {
@@ -78,25 +73,25 @@ export default function ResponsiveNavigation({
       <button
         onClick={() => handleNavigation(item.id, item.path)}
         className={cn(
-          'group flex items-center justify-center transition-all',
-          isMobile ? 'flex-col gap-1 w-full h-full' : 'flex-col gap-2 w-full'
+          "group flex items-center justify-center transition-all",
+          isMobile ? "flex-col gap-1 w-full h-full" : "flex-col gap-2 w-full"
         )}
       >
         <div
           className={cn(
-            'flex items-center justify-center transition-all duration-300 rounded-full',
+            "flex items-center justify-center transition-all duration-300 rounded-full",
             `${
               isChatPage
                 ? isMobile
-                  ? 'w-10 h-10'
-                  : 'w-10 h-10'
+                  ? "w-10 h-10"
+                  : "w-10 h-10"
                 : isMobile
-                ? 'w-10 h-10'
-                : 'w-12 h-12'
+                ? "w-10 h-10"
+                : "w-12 h-12"
             }`,
             isActive
-              ? 'bg-[#FF3B30] text-white shadow-lg shadow-red-500/20'
-              : 'bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10'
+              ? "bg-[#FF3B30] text-white shadow-lg shadow-red-500/20"
+              : "bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10"
           )}
         >
           {isChatPage ? (
@@ -108,11 +103,11 @@ export default function ResponsiveNavigation({
         {isChatPage ? null : (
           <span
             className={cn(
-              'font-medium tracking-wide transition-colors',
-              isMobile ? 'text-[9px]' : 'text-[10px]',
+              "font-medium tracking-wide transition-colors",
+              isMobile ? "text-[9px]" : "text-[10px]",
               isActive
-                ? 'text-white'
-                : 'text-gray-500 group-hover:text-gray-300'
+                ? "text-white"
+                : "text-gray-500 group-hover:text-gray-300"
             )}
           >
             {item.label}
@@ -126,20 +121,24 @@ export default function ResponsiveNavigation({
       {isChatPage ? (
         <div
           className={cn(
-            'hidden md:flex h-[100vh] bg-[#111111] w-[auto] flex-col items-center justify-between py-2 px-0 gap-4 flex-shrink-0 sticky top-0'
+            "hidden md:flex h-[100vh] bg-[#111111] w-[auto] flex-col items-center justify-between py-2 px-0 gap-4 flex-shrink-0 sticky top-0"
           )}
         >
           {/* Top Pill */}
-          <div className='flex flex-col items-center gap-4 '>
+          <div className="flex flex-col items-center gap-4 ">
             {/* Logo */}
-            <div className='w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center flex-shrink-0'>
-              <span className='text-[#FF3B30] font-bold italic text-lg tracking-tighter'>
-                AST
+            <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </span>
             </div>
 
             {/* Nav Items */}
-            <nav className='flex flex-col items-center gap-2 w-full'>
+            <nav className="flex flex-col items-center gap-2 w-full">
               {menuItems.map((item) => (
                 <NavItem
                   key={item.id}
@@ -151,39 +150,44 @@ export default function ResponsiveNavigation({
           </div>
 
           {/* Bottom Pill (Settings) */}
-          <div className='flex flex-col items-center gap-2'>
+          <div className="flex flex-col items-center gap-2">
             <NavItem
               item={{
-                id: 'impostazioni',
-                label: 'Settings',
+                id: "impostazioni",
+                label: "Settings",
                 icon: Settings,
-                path: '/athleta/settings',
+                path: "/athleta/settings",
               }}
-              isActive={activeTab === 'impostazioni'}
+              isActive={activeTab === "impostazioni"}
             />
             <button
-              onClick={() => console.log('logout')}
-              className='flex flex-col items-center gap-2 group w-full'
+              onClick={() => console.log("logout")}
+              className="flex flex-col items-center gap-2 group w-full"
             >
-              <div className='w-10 h-10 rounded-full flex items-center justify-center bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10 transition-all'>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10 transition-all">
                 <LogOut size={16} strokeWidth={1.5} />
               </div>
             </button>
           </div>
         </div>
       ) : (
-        <div className='hidden md:flex h-full w-[100px] flex-col items-center py-2 px-2 gap-4 flex-shrink-0 sticky top-0'>
+        <div className="hidden md:flex h-full w-[100px] flex-col items-center py-2 px-2 gap-4 flex-shrink-0 sticky top-0">
           {/* Top Pill */}
-          <div className='w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-6 shadow-xl border border-white/5'>
+          <div className="w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-6 shadow-xl border border-white/5">
             {/* Logo */}
-            <div className='w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center flex-shrink-0'>
-              <span className='text-[#FF3B30] font-bold italic text-lg tracking-tighter'>
-                AST
+                        <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </span>
             </div>
 
+
             {/* Nav Items */}
-            <nav className='flex flex-col items-center gap-6 w-full'>
+            <nav className="flex flex-col items-center gap-6 w-full">
               {menuItems.map((item) => (
                 <NavItem
                   key={item.id}
@@ -192,28 +196,28 @@ export default function ResponsiveNavigation({
                 />
               ))}
             </nav>
-            <div className='h-2' />
+            <div className="h-2" />
           </div>
 
           {/* Bottom Pill (Settings) */}
-          <div className='w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-6 shadow-xl border border-white/5'>
+          <div className="w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-6 shadow-xl border border-white/5">
             <NavItem
               item={{
-                id: 'impostazioni',
-                label: 'Settings',
+                id: "impostazioni",
+                label: "Settings",
                 icon: Settings,
-                path: '/athleta/settings',
+                path: "/athleta/settings",
               }}
-              isActive={activeTab === 'impostazioni'}
+              isActive={activeTab === "impostazioni"}
             />
             <button
-              onClick={() => console.log('logout')}
-              className='flex flex-col items-center gap-2 group w-full'
+              onClick={() => console.log("logout")}
+              className="flex flex-col items-center gap-2 group w-full"
             >
-              <div className='w-12 h-12 rounded-full flex items-center justify-center bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10 transition-all'>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 text-gray-400 group-hover:text-white group-hover:bg-white/10 transition-all">
                 <LogOut size={22} strokeWidth={1.5} />
               </div>
-              <span className='text-[10px] font-medium text-gray-500 group-hover:text-gray-300'>
+              <span className="text-[10px] font-medium text-gray-500 group-hover:text-gray-300">
                 Esci
               </span>
             </button>
@@ -224,33 +228,38 @@ export default function ResponsiveNavigation({
           MOBILE LAYOUT (Visible on sm screens and down)
       ================================================================== */}
       {/* 1. Mobile Top Bar (Logo + Settings/Logout shortcut) */}
-      <div className='md:hidden fixed top-0 left-0 right-0 h-16 bg-[#111111] border-b border-white/5 flex items-center justify-between px-6 z-50'>
-        <div className='w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center'>
-          <span className='text-[#FF3B30] font-bold italic text-md tracking-tighter'>
-            AST
-          </span>
-        </div>
-        <div className='flex gap-4'>
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#111111] border-b border-white/5 flex items-center justify-between px-6 z-50">
+                   <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
+              </span>
+            </div>
+
+        <div className="flex gap-4">
           {/* Settings Icon for Mobile */}
           <button
-            onClick={() => handleNavigation('impostazioni', '/admin/settings')}
+            onClick={() => handleNavigation("impostazioni", "/admin/settings")}
             className={cn(
-              'text-gray-400',
-              activeTab === 'impostazioni' ? 'text-[#FF3B30]' : ''
+              "text-gray-400",
+              activeTab === "impostazioni" ? "text-[#FF3B30]" : ""
             )}
           >
             <Settings size={24} />
           </button>
           <button
-            onClick={() => console.log('logout')}
-            className='text-gray-400'
+            onClick={() => console.log("logout")}
+            className="text-gray-400"
           >
             <LogOut size={24} />
           </button>
         </div>
       </div>
       {/* 2. Mobile Bottom Navigation */}
-      <div className='md:hidden fixed bottom-0 left-0 right-0 h-20 bg-[#111111] border-t border-white/5 flex items-center justify-around px-2 z-50 pb-2'>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 h-20 bg-[#111111] border-t border-white/5 flex items-center justify-around px-2 z-50 pb-2">
         {menuItems.map((item) => (
           <NavItem
             key={item.id}

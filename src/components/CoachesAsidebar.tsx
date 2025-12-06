@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { LuBicepsFlexed } from 'react-icons/lu';
 import { LiaClipboardListSolid } from 'react-icons/lia';
 import { useEffect } from 'react';
+import MyLogo from '@/assets/svg/Logo.svg';
 
 interface SidebarProps {
   activeTab: string;
@@ -140,11 +141,16 @@ export default function ResponsiveNavigation({
           {/* Top Pill */}
           <div className='flex flex-col items-center gap-4 '>
             {/* Logo */}
-            <div className='w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center flex-shrink-0'>
-              <span className='text-[#FF3B30] font-bold italic text-lg tracking-tighter'>
-                AST
+                       <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </span>
             </div>
+
 
             {/* Nav Items */}
             <nav className='flex flex-col items-center gap-2 w-full'>
@@ -184,11 +190,16 @@ export default function ResponsiveNavigation({
           {/* Top Pill */}
           <div className='w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-6 shadow-xl border border-white/5'>
             {/* Logo */}
-            <div className='w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center flex-shrink-0'>
-              <span className='text-[#FF3B30] font-bold italic text-lg tracking-tighter'>
-                AST
+              <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </span>
             </div>
+
 
             {/* Nav Items */}
             <nav className='flex flex-col items-center gap-6 w-full'>
@@ -233,11 +244,15 @@ export default function ResponsiveNavigation({
       ================================================================== */}
       {/* 1. Mobile Top Bar (Logo + Settings/Logout shortcut) */}
       <div className='md:hidden fixed top-0 left-0 right-0 h-16 bg-[#111111] border-b border-white/5 flex items-center justify-between px-6 z-50'>
-        <div className='w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center'>
-          <span className='text-[#FF3B30] font-bold italic text-md tracking-tighter'>
-            AST
-          </span>
-        </div>
+            <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <span className="text-[#FF3B30] font-bold italic text-md tracking-tighter">
+                <img
+                  src={MyLogo}
+                  alt="My Logo"
+                  className="w-8 h-8 object-contain"
+                />
+              </span>
+            </div>
         <div className='flex gap-4'>
           {/* Settings Icon for Mobile */}
           <button
