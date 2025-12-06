@@ -61,6 +61,9 @@ import CoachesProfile5 from './pages/CoachesDashboard/Settings/Profile5';
 import CoachesProfile6 from './pages/CoachesDashboard/Settings/Profile6';
 import TutorDashboard from './pages/tutor/dashboard';
 import Corsi from './pages/tutor/courses/courses';
+import Presentations from './pages/tutor/presentations/presentations';
+import CertificationPage from './pages/tutor/certification/certification';
+import SettingsTutor from './pages/tutor/settings/settings';
 
 const queryClient = new QueryClient();
 
@@ -168,6 +171,9 @@ const App = () => (
           </Route>
           <Route path='/tutor/Dashbaord' element={<TutorDashboard />} />
           <Route path='/tutor/courses' element={<Corsi />} />
+          <Route path='/tutor/presentations' element={<Presentations />} />
+        <Route path='/tutor/certification' element={<CertificationPage />} />
+        <Route path='/tutor/settings' element={< SettingsTutor/>} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

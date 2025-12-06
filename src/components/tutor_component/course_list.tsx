@@ -26,6 +26,7 @@ export function CourseList({
 }: CourseListProps) {
   return (
     <div className="space-y-4">
+
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -55,8 +56,8 @@ export function CourseList({
         ))}
       </div>
 
-      {/* Course List */}
-      <div className="space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto pr-2">
+      {/* Course List — FIXED SCROLL ISSUE */}
+      <div className="space-y-3">
         {courses.map((course) => (
           <button
             key={course.id}

@@ -1,5 +1,8 @@
 import { Home,Settings,LogOut} from 'lucide-react';
 import courses from "@/components/svgs/courses.svg"
+import presentations from "@/assets/svg/Presentation.svg"
+import certification from "@/assets/svg/certification.svg"
+import settings from "@/assets/svg/setting.svg"
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import MyLogo from '@/assets/svg/Logo.svg';
@@ -13,8 +16,10 @@ export default function ResponsiveNavigation({ activeTab, onTabChange }: Sidebar
   
   const menuItems = [
     { id: 'controllo', label: 'Controllo', icon: Home, path: '/tutor/Dashbaord' },
-    { id: 'corsi', label: 'Corsi', icon: () => <img src={courses} className="w-6 h-6" />, path: ""},
-    // { id: 'allenatori', label: 'Allenatori', icon: Dumbbell, path: '/admin/trainers' },
+    { id: 'corsi', label: 'Corsi', icon: () => <img src={courses} className="w-6 h-6" />, path: "/tutor/courses"},
+    { id: 'presentations', label: 'Presentations', icon: () => <img src={presentations} className="w-6 h-6" />, path: "/tutor/presentations"},
+    { id: 'certification', label: 'Certification', icon: () => <img src={certification} className="w-6 h-6" />, path: "/tutor/certification"},
+    
     // { id: 'tutore', label: 'Tutore', icon: Bike, path: '/admin/academy' },
     // { id: 'piani', label: 'Piani', icon: Sparkles, path: '/admin/plans' },
   ];
@@ -105,7 +110,7 @@ export default function ResponsiveNavigation({ activeTab, onTabChange }: Sidebar
         {/* Bottom Pill (Settings) */}
         <div className="w-full bg-[#111111] rounded-[40px] py-6 flex flex-col items-center gap-4 shadow-xl border border-white/5">
           <NavItem 
-            item={{ id: 'impostazioni', label: 'Settings', icon: Settings, path: '/admin/settings' }}
+            item={{ id: 'setings', label: 'Settings', icon: () => <img src={settings} className="w-6 h-6" />, path: "/tutor/settings"}}
             isActive={activeTab === 'impostazioni'} 
           />
           <button 
