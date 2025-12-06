@@ -38,7 +38,7 @@ import CheckIn2 from './pages/AthleteDashboard/CheckIn/CheckIn2';
 import CheckIn3 from './pages/AthleteDashboard/CheckIn/CheckIn3';
 import CheckIn4 from './pages/AthleteDashboard/CheckIn/CheckIn4';
 import Chat from './pages/AthleteDashboard/AthleteChats';
-import AthleteSetting from './pages/AthleteDashboard/Settings/Setting';
+import AthleteSetting from './pages/AthleteDashboard/Settings/settings_athlete';
 import AthleteProfile from './pages/AthleteDashboard/Settings/Profile';
 import AthleteProfile1 from './pages/AthleteDashboard/Settings/Profile1';
 import AthleteProfile2 from './pages/AthleteDashboard/Settings/Profile2';
@@ -51,7 +51,7 @@ import CheckIn from './pages/CoachesDashboard/CheckIn/CheckIn';
 import CoachesChat from './pages/CoachesDashboard/CoachesChats';
 import CoachesPlans from './pages/CoachesDashboard/CoachesPlans';
 import HeightWeightSelection from './pages/Register/HeightAndWeight';
-import CoachesSetting from './pages/CoachesDashboard/Settings/Setting';
+import CoachesSetting from './pages/CoachesDashboard/Settings/settings_coaches';
 import CoachesProfile from './pages/CoachesDashboard/Settings/Profile';
 import CoachesProfile1 from './pages/CoachesDashboard/Settings/Profile1';
 import CoachesProfile2 from './pages/CoachesDashboard/Settings/Profile2';
@@ -63,7 +63,7 @@ import TutorDashboard from './pages/tutor/dashboard';
 import Corsi from './pages/tutor/courses/courses';
 import Presentations from './pages/tutor/presentations/presentations';
 import CertificationPage from './pages/tutor/certification/certification';
-import SettingsTutor from './pages/tutor/settings/settings';
+import SettingsTutor from './pages/tutor/settings/settings_tutor';
 
 const queryClient = new QueryClient();
 

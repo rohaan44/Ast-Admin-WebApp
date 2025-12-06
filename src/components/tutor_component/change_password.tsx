@@ -9,13 +9,13 @@ interface ChangePasswordViewProps {
 export function ChangePasswordView({ onBack }: ChangePasswordViewProps) {
   return (
     <div className="animate-fade-in">
-      <button 
-        onClick={onBack}
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 transition-colors md:hidden"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span className="text-responsive-sm">Indietro</span>
-      </button>
+    <button 
+  onClick={onBack}
+  className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 transition-colors"
+>
+  <ArrowLeft className="w-4 h-4 text-white" />
+</button>
+
       
       <h1 className="text-responsive-2xl font-bold mb-6 sm:mb-8">Cambiare la password</h1>
       
