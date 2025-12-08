@@ -241,7 +241,9 @@ export default function ResponsiveNavigation({
         <div className='flex gap-4'>
           {/* Settings Icon for Mobile */}
           <button
-            onClick={() => handleNavigation('impostazioni', '/athleta/setting')}
+            onClick={() =>
+              handleNavigation('impostazioni', '/athleta/settings')
+            }
             className={cn(
               'text-gray-400',
               activeTab === 'impostazioni' ? 'text-[#FF3B30]' : ''
