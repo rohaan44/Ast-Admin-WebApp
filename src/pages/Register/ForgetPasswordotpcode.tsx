@@ -3,7 +3,7 @@ import Logo from '@/assets/Logo.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Otp = () => {
+const ForgetPasswordOtp = () => {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [timeLeft, setTimeLeft] = useState(60);
   const [canResend, setCanResend] = useState(false);
@@ -42,7 +42,7 @@ const Otp = () => {
 
   const handleSubmit = () => {
     setError('');
-    navigate('/gender');
+    navigate('/create-password');
   };
 
   return (
@@ -123,4 +123,4 @@ const Otp = () => {
   );
 };
 
-export default Otp;
+export default ForgetPasswordOtp;

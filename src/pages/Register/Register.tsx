@@ -59,6 +59,9 @@ const RegisterPage = () => {
       alert('Per favore seleziona una tipologia di utente');
     }
   };
+  const handleLogin = () => {
+    navigate('/login');
+  };
 
   useEffect(() => {
     if (userType && hasCompletedOnboarding) {
@@ -133,6 +136,16 @@ const RegisterPage = () => {
           >
             Continuare
           </button>
+
+          <div className='flex flex-col mt-5 w-full gap-2'>
+            <p className='text-gray-400 text-center'>Hai già un account?</p>
+            <button
+              onClick={handleLogin}
+              className='bg-red-700 text-white font-semibold py-3 w-full rounded-lg'
+            >
+              Login
+            </button>
+          </div>
         </div>
 
         {/* RIGHT IMAGE */}

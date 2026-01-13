@@ -3,12 +3,17 @@ import { Toaster as Sonner } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Index from './pages/Index';
 import AdminLogin from './pages/admin/Login';
 import AdminDashboard from './pages/admin/Dashboard';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register/Register';
 import SingIn from './pages/Register/SingIn';
+import Login from './pages/Register/Login';
+import ForgetPassword from './pages/Register/ForgetPassword';
+import ForgetPasswordOtpCode from './pages/Register/ForgetPasswordOtpCode';
+import CreateNewPassword from './pages/Register/CreateNewPassword';
 import Otp from './pages/Register/Otp';
 import GenderSelection from './pages/Register/GenderSelect';
 import DateOfBirth from './pages/Register/DateOfBirth';
@@ -72,8 +77,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<Index />} />
           <Route path='/admin' element={<AdminLogin />} />
@@ -85,6 +90,13 @@ const App = () => (
           <Route path='/admin/settings' element={<Settings />} />
           <Route path='/register' element={<Register />} />
           <Route path='/singin' element={<SingIn />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/forgotpassword' element={<ForgetPassword />} />
+          <Route
+            path='/forgotpassword-otp-verification'
+            element={<ForgetPasswordOtpCode />}
+          />
+          <Route path='/create-password' element={<CreateNewPassword />} />
           <Route path='/otp-verification' element={<Otp />} />
           <Route path='/gender' element={<GenderSelection />} />
           <Route path='/date-of-birth' element={<DateOfBirth />} />
@@ -172,8 +184,8 @@ const App = () => (
           <Route path='/tutor/Dashbaord' element={<TutorDashboard />} />
           <Route path='/tutor/courses' element={<Corsi />} />
           <Route path='/tutor/presentations' element={<Presentations />} />
-        <Route path='/tutor/certification' element={<CertificationPage />} />
-        <Route path='/tutor/settings' element={< SettingsTutor/>} />
+          <Route path='/tutor/certification' element={<CertificationPage />} />
+          <Route path='/tutor/settings' element={<SettingsTutor />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
